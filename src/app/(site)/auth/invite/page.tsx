@@ -1,5 +1,5 @@
 import React from "react";
-import InvitedSignin from "@/features/auth/components/InvitedSignin";
+import InvitedSignin from "@/features/auth/components/invited-signin";
 import { Suspense } from "react";
 
 const InvitedSigninPage = () => {

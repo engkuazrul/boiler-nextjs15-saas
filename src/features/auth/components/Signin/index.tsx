@@ -2,11 +2,11 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
-import GithubSigninButton from "../GithubSigninButton";
-import GoogleSigninButton from "../GoogleSigninButton";
-import SigninWithMagicLink from "../SigninWithMagicLink";
-import SigninWithPassword from "../SigninWithPassword";
-import DemoSignin from "./DemoSignin";
+import GithubSigninButton from "../github-signin-button";
+import GoogleSigninButton from "../google-signin-button";
+import SigninWithMagicLink from "../signin-with-magic-link";
+import SigninWithPassword from "../signin-with-password";
+import DemoSignin from "./demo-signin";
 
 export default function Signin() {
 	const [signinOption, setSigninOption] = useState("magic-link");

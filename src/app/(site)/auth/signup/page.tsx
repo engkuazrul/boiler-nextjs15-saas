@@ -1,4 +1,4 @@
-import Signup from "@/features/auth/components/Signup";
+import Signup from "@/features/auth/components/signup";
 
 import { Metadata } from "next";
 
