@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { integrations, messages } from "@/integrations.config";
-import Graphics from "./Graphics";
+import Graphics from "./graphics";
 
 export default function Newsletter() {
 	const [email, setEmail] = useState("");

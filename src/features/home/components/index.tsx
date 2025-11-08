@@ -1,13 +1,13 @@
-import Hero from "./Hero";
-import Features from "./Features";
-import FeaturesWithImage from "./FeaturesWithImage";
-import Counter from "./Counter";
-import CallToAction from "./CallToAction";
-import Testimonials from "./Testimonials";
-import Pricing from "./Pricing";
-import FAQ from "./FAQ";
-import Blog from "./Blog";
-import Newsletter from "./Newsletter";
+import Hero from "./hero";
+import Features from "./features";
+import FeaturesWithImage from "./features-with-image";
+import Counter from "./counter";
+import CallToAction from "./call-to-action";
+import Testimonials from "./testimonials";
+import Pricing from "./pricing";
+import FAQ from "./faq";
+import Blog from "./blog";
+import Newsletter from "./newsletter";
 
 import { integrations } from "@/integrations.config";
 

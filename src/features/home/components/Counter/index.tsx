@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import CountUp from "./CountUp";
+import CountUp from "./count-up";
 
 const Counter = () => {
 	const t = useTranslations("homepage.counter_section");
