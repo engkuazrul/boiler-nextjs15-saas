@@ -2,7 +2,7 @@
 
 import { isAuthorized } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { excludeFields } from "@/utils/ui-utils";
+import { excludeFields } from "@/utils/data-utils";
 
 export async function getUsers(filter: any) {
 	const currentUser = await isAuthorized();

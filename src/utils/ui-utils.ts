@@ -5,19 +5,40 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-export function validateEmail(email: string) {
-	return email.match(
-		// eslint-disable-next-line no-useless-escape
-		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-	);
+export function getScrollBarWidth() {
+	return window.innerWidth - document.documentElement.clientWidth;
 }
 
-export function excludeFields<
-	T extends Record<string, unknown>,
-	K extends keyof T,
->(record: T, keys: K[]) {
-	return Object.fromEntries(
-		Object.entries(record).filter(([key]) => !keys.includes(key as K))
-	) as Omit<T, K>;
+export function onScroll() {
+	if (typeof window === "undefined") {
+		return;
+	}
+
+	const sections = document.querySelectorAll(".menu-scroll");
+	const scrollPos =
+		window.pageYOffset ||
+		document.documentElement.scrollTop ||
+		document.body.scrollTop;
+
+	for (let i = 0; i < sections.length; i++) {
+		const currLink = sections[i];
+		const val = currLink.getAttribute("href");
+		const newVal = val?.replace(/\//g, "");
+		const refElement = newVal
+			? (document.querySelector(newVal) as HTMLElement | null)
+			: null;
+		const scrollTopMinus = scrollPos + 73;
+		if (
+			refElement &&
+			refElement.offsetTop <= scrollTopMinus &&
+			refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+		) {
+			document.querySelector(".menu-scroll")?.classList.remove("active");
+			currLink.classList.add("active");
+		} else {
+			currLink.classList.remove("active");
+		}
+	}
 }
+
 
