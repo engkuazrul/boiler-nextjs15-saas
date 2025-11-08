@@ -1,8 +1,8 @@
 const integrations = {
-	isSanityEnabled: true,
-	isOpenAIEnabled: true,
+	isSanityEnabled: false,
+	isOpenAIEnabled: false,
 	isAlgoliaEnabled: true,
-	isMailchimpEnabled: true,
+	isMailchimpEnabled: false,
 	isAuthEnabled: true,
 	isPaymentsEnabled: true,
 	isI18nEnabled: false,
