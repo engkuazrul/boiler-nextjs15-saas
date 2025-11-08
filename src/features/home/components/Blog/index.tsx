@@ -1,4 +1,4 @@
-import BlogItem from "@/features/blog/components/BlogItem";
+import BlogItem from "@/features/blog/components/blog-item";
 import SectionHeader from "@/components/ui/section-header";
 import { getPosts } from "@/sanity/sanity-utils";
 import { getTranslations } from "next-intl/server";

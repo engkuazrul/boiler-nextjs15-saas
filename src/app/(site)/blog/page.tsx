@@ -1,4 +1,4 @@
-import BlogItem from "@/features/blog/components/BlogItem";
+import BlogItem from "@/features/blog/components/blog-item";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 import { getPosts } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
