@@ -73,10 +73,4 @@ export const menuData: Menu[] = [
 			},
 		],
 	},
-	{
-		id: 4,
-		titleKey: "buyNow",
-		newTab: true,
-		path: "https://saasbold.com/#pricing",
-	},
 ];
