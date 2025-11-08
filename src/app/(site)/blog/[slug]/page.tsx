@@ -2,7 +2,7 @@ import RenderBodyContent from "@/features/blog/components/render-body-content";
 import SocialShare from "@/features/blog/components/social-share";
 import CopyToClipboard from "@/components/ui/copy-to-clipboard";
 import { structuredAlgoliaHtmlData } from "@/lib/algolia-search";
-import { getPostBySlug, imageBuilder } from "@/lib/sanity/utils";
+import { getPostBySlug, imageBuilder } from "@/features/blog/lib/sanity/utils";
 import { Blog } from "@/features/blog/types/blog";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";

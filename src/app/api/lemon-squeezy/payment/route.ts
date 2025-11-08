@@ -1,4 +1,4 @@
-import { lemonSqueezyApiInstance } from "@/lib/lemon-squeezy/client";
+import { lemonSqueezyApiInstance } from "@/features/billing-lemon-squeezy/lib/lemon-squeezy";
 import { NextResponse } from "next/server";
 import { lemonSqueezyPaymentSchema } from "./schema";
 

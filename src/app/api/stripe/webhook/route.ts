@@ -1,6 +1,6 @@
 import { hashPassword } from "@/utils/crypto";
 import { prisma } from "@/lib/prisma";
-import { stripe } from "@/lib/stripe/client";
+import { stripe } from "@/features/billing-stripe/lib/stripe";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import type Stripe from "stripe";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Blog } from "@/features/blog/types/blog";
 import Image from "next/image";
-import { imageBuilder } from "@/lib/sanity/utils";
+import { imageBuilder } from "../lib/sanity/utils";
 import Link from "next/link";
 
 const BlogItem = ({ blog }: { blog: Blog }) => {

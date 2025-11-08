@@ -1,4 +1,4 @@
-import schemas from "@/lib/sanity/schemas";
+import schemas from "@/features/blog/lib/sanity/schemas";
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 

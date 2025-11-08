@@ -1,6 +1,6 @@
 import BlogItem from "@/features/blog/components/blog-item";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
-import { getPosts } from "@/lib/sanity/utils";
+import { getPosts } from "@/features/blog/lib/sanity/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
