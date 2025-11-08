@@ -2,8 +2,8 @@
 
 import { isAuthorized } from "@/lib/auth";
 import { getPricingData } from "@/pricing/pricingData";
-import PurchaseEmptyState from "./PurchaseEmptyState";
-import PurchaseTable from "./PurchaseTable";
+import PurchaseEmptyState from "./purchase-empty-state";
+import PurchaseTable from "./purchase-table";
 
 type PropsType = {
 	user: Awaited<ReturnType<typeof isAuthorized>>;

@@ -5,9 +5,9 @@ import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import DeleteAccount from "./DeleteAccount";
-import EditProfile from "./EditProfile";
-import PasswordChange from "./PasswordChange";
+import DeleteAccount from "./delete-account";
+import EditProfile from "./edit-profile";
+import PasswordChange from "./password-change";
 
 const AccountSettings = () => {
 	const [showDeleteModal, setShowDeleteModal] = useState(false);

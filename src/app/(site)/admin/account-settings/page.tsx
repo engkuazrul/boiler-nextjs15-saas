@@ -1,6 +1,6 @@
 import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
-import EditProfile from "@/features/user/components/AccountSettings/EditProfile";
-import PasswordChange from "@/features/user/components/AccountSettings/PasswordChange";
+import EditProfile from "@/features/user/components/account-settings/edit-profile";
+import PasswordChange from "@/features/user/components/account-settings/password-change";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

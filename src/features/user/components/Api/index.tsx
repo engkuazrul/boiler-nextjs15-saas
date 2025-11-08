@@ -1,6 +1,6 @@
 import React from "react";
-import CreateToken from "./CreateToken";
-import TokenList from "./TokenList";
+import CreateToken from "./create-token";
+import TokenList from "./token-list";
 import { getApiKeys } from "@/features/user/actions/api-key";
 
 const APIKey = async () => {

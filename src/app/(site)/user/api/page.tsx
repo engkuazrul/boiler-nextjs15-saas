@@ -1,7 +1,7 @@
 import { getApiKeys } from "@/features/user/actions/api-key";
 import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
-import CreateToken from "@/features/user/components/Api/CreateToken";
-import TokenList from "@/features/user/components/Api/TokenList";
+import CreateToken from "@/features/user/components/api/create-token";
+import TokenList from "@/features/user/components/api/token-list";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
