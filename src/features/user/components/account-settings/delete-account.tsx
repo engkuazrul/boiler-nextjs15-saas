@@ -1,4 +1,4 @@
-import Card from "@/components/ui/dashboard/card";
+import Card from "@/components/ui/form/card";
 import { useTranslations } from "next-intl";
 
 const DeleteAccount = ({ setShowDeleteModal, showDeleteModal }: any) => {

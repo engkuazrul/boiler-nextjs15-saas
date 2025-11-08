@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
+import Breadcrumb from "@/components/layout/dashboard/breadcrumb";
 import React from "react";
 import { Metadata } from "next";
 import Notification from "@/components/feedback/notification";

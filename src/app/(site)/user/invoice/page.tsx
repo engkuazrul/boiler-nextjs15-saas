@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
+import Breadcrumb from "@/components/layout/dashboard/breadcrumb";
 import PurchaseHistory from "@/features/user/components/purchase-history";
 
 import { isAuthorized } from "@/lib/auth";

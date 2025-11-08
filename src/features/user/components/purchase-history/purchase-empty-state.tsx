@@ -1,6 +1,6 @@
 "use client";
 
-import Card from "@/components/ui/dashboard/card";
+import Card from "@/components/ui/form/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 

@@ -9,7 +9,7 @@ type PropsType = {
 	marginBottom?: string;
 };
 
-export default function SectionTitleH2(props: PropsType) {
+export default function SectionTitle(props: PropsType) {
 	const {
 		title,
 		center,

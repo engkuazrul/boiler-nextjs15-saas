@@ -33,3 +33,4 @@ export default function Breadcrumb({ pageTitle }: PropsType) {
 		</div>
 	);
 }
+

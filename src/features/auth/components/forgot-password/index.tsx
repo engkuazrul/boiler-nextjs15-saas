@@ -2,8 +2,8 @@
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import Link from "next/link";
-import FormButton from "@/components/ui/dashboard/form-button";
-import InputGroup from "@/components/ui/dashboard/input-group";
+import FormButton from "@/components/ui/form/form-button";
+import InputGroup from "@/components/ui/form/input-group";
 import axios from "axios";
 import Loader from "@/components/feedback/loader";
 import { integrations, messages } from "@/integrations.config";

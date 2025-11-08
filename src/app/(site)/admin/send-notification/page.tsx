@@ -1,5 +1,5 @@
 import SendNotificationCard from "@/features/admin/components/send-notification/send-notification-card";
-import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
+import Breadcrumb from "@/components/layout/dashboard/breadcrumb";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

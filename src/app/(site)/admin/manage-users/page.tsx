@@ -1,5 +1,5 @@
 import UsersListContainer from "@/features/admin/components/users";
-import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
+import Breadcrumb from "@/components/layout/dashboard/breadcrumb";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

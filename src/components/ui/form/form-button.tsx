@@ -9,3 +9,4 @@ export default function FormButton({ height, children }: any) {
 		</button>
 	);
 }
+

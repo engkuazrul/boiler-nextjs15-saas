@@ -1,7 +1,7 @@
 "use client";
 
-import Card from "@/components/ui/dashboard/card";
-import { Editor } from "@/components/ui/dashboard/editor";
+import Card from "@/components/ui/form/card";
+import { Editor } from "@/components/ui/form/editor";
 import { useTranslations } from "next-intl";
 
 const arrowIcon = (

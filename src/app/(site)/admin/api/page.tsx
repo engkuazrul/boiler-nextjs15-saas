@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
+import Breadcrumb from "@/components/layout/dashboard/breadcrumb";
 import CreateToken from "@/features/user/components/api/create-token";
 import TokenList from "@/features/user/components/api/token-list";
 import { Metadata } from "next";

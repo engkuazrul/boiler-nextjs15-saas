@@ -1,7 +1,7 @@
 "use client";
-import Card from "@/components/ui/dashboard/card";
-import FormButton from "@/components/ui/dashboard/form-button";
-import InputGroup from "@/components/ui/dashboard/input-group";
+import Card from "@/components/ui/form/card";
+import FormButton from "@/components/ui/form/form-button";
+import InputGroup from "@/components/ui/form/input-group";
 import Loader from "@/components/feedback/loader";
 import axios from "axios";
 import { useSession } from "next-auth/react";

@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
+import Breadcrumb from "@/components/layout/dashboard/breadcrumb";
 import AccountSettings from "@/features/user/components/account-settings";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";

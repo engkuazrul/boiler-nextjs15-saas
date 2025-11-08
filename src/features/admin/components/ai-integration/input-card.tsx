@@ -1,5 +1,5 @@
-import Card from "@/components/ui/dashboard/card";
-import FormButton from "@/components/ui/dashboard/form-button";
+import Card from "@/components/ui/form/card";
+import FormButton from "@/components/ui/form/form-button";
 import InputSelect from "@/components/ui/input-select";
 import { useTranslations } from "next-intl";
 

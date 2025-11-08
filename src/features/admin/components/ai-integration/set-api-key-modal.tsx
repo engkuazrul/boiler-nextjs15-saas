@@ -1,5 +1,5 @@
-import FormButton from "@/components/ui/dashboard/form-button";
-import InputGroup from "@/components/ui/dashboard/input-group";
+import FormButton from "@/components/ui/form/form-button";
+import InputGroup from "@/components/ui/form/input-group";
 import ModalCloseButton from "@/components/ui/modals/modal-close-button";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
