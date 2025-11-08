@@ -17,8 +17,8 @@ export default getRequestConfig(async () => {
 		locale = requestedLocale;
 	}
 
-	const defaultMessages = (await import(`../../dictionary/en.json`)).default;
-	const userMessages = (await import(`../../dictionary/${locale}.json`))
+	const defaultMessages = (await import(`../../../dictionary/en.json`)).default;
+	const userMessages = (await import(`../../../dictionary/${locale}.json`))
 		.default;
 
 	const messages = deepmerge(defaultMessages, userMessages, {
@@ -54,3 +54,4 @@ export default getRequestConfig(async () => {
 		messages: messages as any,
 	};
 });
+

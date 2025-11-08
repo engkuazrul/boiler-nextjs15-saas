@@ -1,13 +1,13 @@
 import ImageUrlBuilder from "@sanity/image-url";
 import { createClient, type QueryParams } from "next-sanity";
-import clientConfig from "./config/client-config";
+import clientConfig from "./client";
 import {
 	postQuery,
 	postQueryBySlug,
 	postQueryByTag,
 	postQueryByAuthor,
 	postQueryByCategory,
-} from "./sanity-query";
+} from "./queries";
 import { Blog } from "@/features/blog/types/blog";
 import { integrations } from "@/integrations.config";
 
@@ -93,3 +93,4 @@ export const getAuthorBySlug = async (slug: string) => {
 
 	return data;
 };
+

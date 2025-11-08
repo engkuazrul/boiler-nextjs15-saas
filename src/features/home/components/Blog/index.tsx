@@ -1,6 +1,6 @@
 import BlogItem from "@/features/blog/components/blog-item";
 import SectionHeader from "@/components/ui/section-header";
-import { getPosts } from "@/sanity/sanity-utils";
+import { getPosts } from "@/lib/sanity/utils";
 import { getTranslations } from "next-intl/server";
 
 const Blog = async () => {

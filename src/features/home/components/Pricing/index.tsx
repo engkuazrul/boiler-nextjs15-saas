@@ -1,7 +1,7 @@
 "use client";
-import Pricing from "@/stripe/StripeBilling";
-// import Pricing from "@/paddle/PaddleBilling";
-// import Pricing from "@/lemonSqueezy/LsBilling";
+import Pricing from "@/features/billing-stripe/components";
+// import Pricing from "@/features/paddle-billing/components";
+// import Pricing from "@/features/lemon-squeezy-billing/components";
 
 const HomePricing = () => {
 	return (

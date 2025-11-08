@@ -1,9 +1,9 @@
-import { getPostsByAuthor, getAuthorBySlug } from "@/sanity/sanity-utils";
+import { getPostsByAuthor, getAuthorBySlug } from "@/lib/sanity/utils";
 import BlogItem from "@/features/blog/components/blog-item";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 import { Author } from "@/features/blog/types/blog";
 import Image from "next/image";
-import { imageBuilder } from "@/sanity/sanity-utils";
+import { imageBuilder } from "@/lib/sanity/utils";
 
 type Props = {
 	params: Promise<{

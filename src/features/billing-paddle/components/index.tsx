@@ -1,10 +1,10 @@
 "use client";
 import SectionHeader from "@/components/ui/section-header";
-import { PaddleLoader } from "@/paddle/paddleLoader";
+import { PaddleLoader } from "@/lib/paddle/loader";
 import { getPricingData } from "@/constants/pricing-data";
 import { useTranslations } from "next-intl";
-import CancelSubscription from "./CancelSubscription";
-import PriceItem from "./PriceItem";
+import CancelSubscription from "./cancel-subscription";
+import PriceItem from "./price-item";
 
 const Pricing = ({ isBilling }: { isBilling?: boolean }) => {
 	const t = useTranslations("homepage.pricing_section");

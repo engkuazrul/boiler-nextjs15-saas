@@ -25,3 +25,4 @@ export const postQueryByTag = groq`*[_type == "post" && $slug in tags[]->slug.cu
 export const postQueryByAuthor = groq`*[_type == "post" && author->slug.current == $slug] ${postData}`;
 
 export const postQueryByCategory = groq`*[_type == "post" && category->slug.current == $slug] ${postData}`;
+

@@ -1,8 +1,8 @@
 "use client";
 import SectionHeader from "@/components/ui/section-header";
 import { getPricingData } from "@/constants/pricing-data";
-import CancelSubscription from "./CancelSubscription";
-import PriceItem from "./Pricing";
+import CancelSubscription from "./cancel-subscription";
+import PriceItem from "./pricing";
 
 const Pricing = ({ isBilling }: { isBilling?: boolean }) => {
 	return (

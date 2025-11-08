@@ -3,7 +3,7 @@
 import SectionHeader from "@/components/ui/section-header";
 import { getPricingData } from "@/constants/pricing-data";
 import { useTranslations } from "next-intl";
-import PriceItem from "./PriceItem";
+import PriceItem from "./price-item";
 
 const Pricing = ({ isBilling }: { isBilling?: boolean }) => {
 	const t = useTranslations("homepage.pricing_section");
