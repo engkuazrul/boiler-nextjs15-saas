@@ -2,9 +2,9 @@ import algoliasearch from "algoliasearch";
 import { useEffect } from "react";
 import { Hits, InstantSearch } from "react-instantsearch";
 import { integrations } from "@/integrations.config";
-import CustomHits from "./CustomHits";
-import SearchBox from "./CustomSearchBox";
-import EmptyState from "./EmptyState";
+import CustomHits from "./custom-hits";
+import SearchBox from "./custom-search-box";
+import EmptyState from "./empty-state";
 
 const appID = process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID as string;
 const apiKEY = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY as string;
