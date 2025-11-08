@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import AccountMenu from "../../AccountMenu";
+import AccountMenu from "../../account-menu";
 
 export default function AccountButton({ user }: any) {
 	const profilePic = user?.image

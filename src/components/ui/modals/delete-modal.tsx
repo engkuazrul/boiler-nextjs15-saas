@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
-import Loader from "@/components/feedback/Loader";
-import ModalCloseButton from "./ModalCloseButton";
+import Loader from "@/components/feedback/loader";
+import ModalCloseButton from "./modal-close-button";
 
 export default function DeleteModal(props: any) {
 	const {

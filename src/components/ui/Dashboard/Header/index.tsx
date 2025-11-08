@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
-import AccountButton from "./AccountButton";
-import Notifications from "./NotificationMenu/Notifications";
-import ThemeToggler from "./ThemeToggler";
+import AccountButton from "./account-button";
+import Notifications from "./notification-menu/notifications";
+import ThemeToggler from "./theme-toggler";
 
 export default function Header({ openSidebar, setOpenSidebar }: any) {
 	const { data: session } = useSession();

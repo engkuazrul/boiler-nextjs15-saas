@@ -1,6 +1,6 @@
 "use client";
-import Header from "@/components/ui/Dashboard/Header";
-import Sidebar from "@/components/ui/Dashboard/Sidebar";
+import Header from "@/components/ui/dashboard/header";
+import Sidebar from "@/components/ui/dashboard/sidebar";
 import { sidebarData } from "@/staticData/sidebarData";
 import { useState } from "react";
 

@@ -1,7 +1,7 @@
 "use client";
 import { deleteApiKey } from "@/features/user/actions/api-key";
-import CopyToClipboard from "@/components/ui/CopyToClipboard";
-import DeleteModal from "@/components/ui/Modals/DeleteModal";
+import CopyToClipboard from "@/components/ui/copy-to-clipboard";
+import DeleteModal from "@/components/ui/modals/delete-modal";
 import { ApiKey } from "@prisma/client";
 import { useTranslations } from "next-intl";
 import { useState } from "react";

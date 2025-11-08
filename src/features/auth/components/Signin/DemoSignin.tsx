@@ -1,5 +1,5 @@
 "use client";
-import Loader from "@/components/feedback/Loader";
+import Loader from "@/components/feedback/loader";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";

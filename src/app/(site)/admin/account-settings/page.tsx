@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/ui/Dashboard/Breadcrumb";
+import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
 import EditProfile from "@/features/user/components/AccountSettings/EditProfile";
 import PasswordChange from "@/features/user/components/AccountSettings/PasswordChange";
 import { Metadata } from "next";

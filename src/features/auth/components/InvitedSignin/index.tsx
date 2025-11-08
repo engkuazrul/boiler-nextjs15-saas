@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import Loader from "@/components/feedback/Loader";
+import InputGroup from "@/components/ui/dashboard/input-group";
+import FormButton from "@/components/ui/dashboard/form-button";
+import Loader from "@/components/feedback/loader";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useSearchParams, useRouter } from "next/navigation";

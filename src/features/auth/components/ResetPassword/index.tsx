@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";

@@ -1,7 +1,7 @@
 "use client";
 
-import CopyToClipboard from "@/components/ui/CopyToClipboard";
-import Card from "@/components/ui/Dashboard/Card";
+import CopyToClipboard from "@/components/ui/copy-to-clipboard";
+import Card from "@/components/ui/dashboard/card";
 import { useTranslations } from "next-intl";
 
 export default function OutputCard({ generated }: any) {

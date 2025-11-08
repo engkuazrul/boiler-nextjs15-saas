@@ -5,9 +5,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import z from "zod";
 import { integrations, messages } from "@/integrations.config";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
-import Loader from "@/components/feedback/Loader";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
+import Loader from "@/components/feedback/loader";
 
 const schema = z.object({
 	email: z.string().email(),

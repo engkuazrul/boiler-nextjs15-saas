@@ -1,5 +1,5 @@
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
 import { rateLimitByIp } from "@/lib/rate-limit";
 import axios, { AxiosError } from "axios";
 import { signIn } from "next-auth/react";
@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import z from "zod";
 import { integrations, messages } from "@/integrations.config";
-import Loader from "@/components/feedback/Loader";
+import Loader from "@/components/feedback/loader";
 
 const schema = z.object({
 	name: z

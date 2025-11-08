@@ -4,7 +4,7 @@
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import AccountMenu from "@/components/ui/AccountMenu";
+import AccountMenu from "@/components/ui/account-menu";
 
 const Account = ({ navbarOpen }: { navbarOpen: boolean }) => {
 	const [dropdown, setDropdown] = useState(false);

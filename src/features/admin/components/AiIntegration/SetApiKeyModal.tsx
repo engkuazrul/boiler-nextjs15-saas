@@ -1,6 +1,6 @@
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
-import ModalCloseButton from "@/components/ui/Modals/ModalCloseButton";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
+import ModalCloseButton from "@/components/ui/modals/modal-close-button";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

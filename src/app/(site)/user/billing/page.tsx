@@ -1,6 +1,6 @@
 import React from "react";
 import Billing from "@/features/user/components/Billing";
-import Breadcrumb from "@/components/ui/Dashboard/Breadcrumb";
+import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

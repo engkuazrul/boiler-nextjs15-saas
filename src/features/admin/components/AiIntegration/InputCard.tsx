@@ -1,6 +1,6 @@
-import Card from "@/components/ui/Dashboard/Card";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputSelect from "@/components/ui/InputSelect";
+import Card from "@/components/ui/dashboard/card";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputSelect from "@/components/ui/input-select";
 import { useTranslations } from "next-intl";
 
 const paragraphsCount = [

@@ -1,5 +1,5 @@
 "use client";
-import InviteUserModal from "@/components/ui/Modals/InviteUserModal";
+import InviteUserModal from "@/components/ui/modals/invite-user-modal";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

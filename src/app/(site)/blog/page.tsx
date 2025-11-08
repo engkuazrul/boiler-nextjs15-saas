@@ -1,5 +1,5 @@
 import BlogItem from "@/features/blog/components/BlogItem";
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 import { getPosts } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";

@@ -1,6 +1,6 @@
 "use client";
 
-import SectionHeader from "@/components/ui/SectionHeader";
+import SectionHeader from "@/components/ui/section-header";
 import { Testimonial } from "@/types/testimonial";
 import { useTranslations } from "next-intl";
 import Image from "next/image";

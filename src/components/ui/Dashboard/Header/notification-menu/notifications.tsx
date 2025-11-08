@@ -2,7 +2,7 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import Notification from "./NotificationItem";
+import Notification from "./notification-item";
 
 export default function Notifications({ role }: { role?: string }) {
 	const [showNotification, setShowNotification] = useState(false);

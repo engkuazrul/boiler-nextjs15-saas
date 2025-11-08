@@ -10,9 +10,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { integrations } from "@/integrations.config";
 import GlobalSearchModal from "@/features/search/components";
-import Account from "./Account";
-import Dropdown from "./Dropdown";
-import ThemeSwitcher from "./ThemeSwitcher";
+import Account from "./account";
+import Dropdown from "./dropdown";
+import ThemeSwitcher from "./theme-switcher";
 import { LanguageSwitcher } from "./language-switcher";
 import { menuData } from "./menuData";
 

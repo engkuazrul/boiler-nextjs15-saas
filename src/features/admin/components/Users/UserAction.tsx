@@ -1,6 +1,6 @@
 "use client";
 import { deleteUser, updateUser } from "@/features/admin/actions/user";
-import DeleteModal from "@/components/ui/Modals/DeleteModal";
+import DeleteModal from "@/components/ui/modals/delete-modal";
 import { signIn, useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";

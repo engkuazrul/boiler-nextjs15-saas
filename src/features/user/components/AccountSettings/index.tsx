@@ -1,5 +1,5 @@
 "use client";
-import DeleteModal from "@/components/ui/Modals/DeleteModal";
+import DeleteModal from "@/components/ui/modals/delete-modal";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";

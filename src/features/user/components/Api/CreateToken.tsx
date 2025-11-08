@@ -1,8 +1,8 @@
 "use client";
 import { createApiKey } from "@/features/user/actions/api-key";
-import Card from "@/components/ui/Dashboard/Card";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
+import Card from "@/components/ui/dashboard/card";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import toast from "react-hot-toast";

@@ -1,6 +1,6 @@
 import RenderBodyContent from "@/features/blog/components/RenderBodyContent";
 import SocialShare from "@/features/blog/components/SocialShare";
-import CopyToClipboard from "@/components/ui/CopyToClipboard";
+import CopyToClipboard from "@/components/ui/copy-to-clipboard";
 import { structuredAlgoliaHtmlData } from "@/lib/algolia-search";
 import { getPostBySlug, imageBuilder } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";

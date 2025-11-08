@@ -2,10 +2,10 @@
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import Link from "next/link";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
 import axios from "axios";
-import Loader from "@/components/feedback/Loader";
+import Loader from "@/components/feedback/loader";
 import { integrations, messages } from "@/integrations.config";
 import z from "zod";
 

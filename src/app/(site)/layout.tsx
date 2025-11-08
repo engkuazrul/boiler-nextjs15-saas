@@ -1,6 +1,6 @@
-import Loader from "@/components/feedback/PreLoader";
-import FooterWrapper from "@/components/layout/Footer/FooterWrapper";
-import { HeaderWrapper } from "@/components/layout/Header/HeaderWrapper";
+import Loader from "@/components/feedback/pre-loader";
+import FooterWrapper from "@/components/layout/footer/footer-wrapper";
+import { HeaderWrapper } from "@/components/layout/header/header-wrapper";
 import NextTopLoader from "nextjs-toploader";
 import "react-quill-new/dist/quill.snow.css";
 import "../../styles/globals.css";

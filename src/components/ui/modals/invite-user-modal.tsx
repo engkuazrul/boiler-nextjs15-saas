@@ -2,11 +2,11 @@ import axios from "axios";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
-import InputSelect from "@/components/ui/InputSelect";
-import Loader from "@/components/feedback/Loader";
-import ModalCloseButton from "./ModalCloseButton";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
+import InputSelect from "@/components/ui/input-select";
+import Loader from "@/components/feedback/loader";
+import ModalCloseButton from "./modal-close-button";
 
 type PropsType = {
 	isOpen: boolean;

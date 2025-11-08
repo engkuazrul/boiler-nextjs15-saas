@@ -1,9 +1,9 @@
 "use client";
 import { getSignedURL } from "@/features/user/actions/upload";
-import Card from "@/components/ui/Dashboard/Card";
-import FormButton from "@/components/ui/Dashboard/FormButton";
-import InputGroup from "@/components/ui/Dashboard/InputGroup";
-import Loader from "@/components/feedback/Loader";
+import Card from "@/components/ui/dashboard/card";
+import FormButton from "@/components/ui/dashboard/form-button";
+import InputGroup from "@/components/ui/dashboard/input-group";
+import Loader from "@/components/feedback/loader";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
