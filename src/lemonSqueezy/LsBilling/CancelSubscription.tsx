@@ -1,5 +1,5 @@
 "use client";
-import { getPricingData } from "@/pricing/pricingData";
+import { getPricingData } from "@/constants/pricing-data";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";

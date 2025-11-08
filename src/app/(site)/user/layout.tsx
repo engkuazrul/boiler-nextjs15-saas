@@ -1,7 +1,7 @@
 "use client";
 import Header from "@/components/ui/dashboard/header";
 import Sidebar from "@/components/ui/dashboard/sidebar";
-import { sidebarData } from "@/staticData/sidebarData";
+import { sidebarData } from "@/constants/sidebar-data";
 import { useState } from "react";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {

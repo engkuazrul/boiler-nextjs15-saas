@@ -2,7 +2,7 @@ import deepmerge from "deepmerge";
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
 import { integrations } from "@/integrations.config";
-import { SUPPORTED_LOCALES } from "./supported-locales";
+import { SUPPORTED_LOCALES } from "@/constants/supported-locales";
 
 export default getRequestConfig(async () => {
 	const cookieStore = await cookies();

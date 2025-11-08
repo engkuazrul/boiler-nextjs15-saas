@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import { adminMenuData, userMenuData } from "@/staticData/sidebarData";
+import { adminMenuData, userMenuData } from "@/constants/sidebar-data";
 import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";

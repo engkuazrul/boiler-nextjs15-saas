@@ -1,6 +1,6 @@
 "use client";
 import SectionHeader from "@/components/ui/section-header";
-import { getPricingData } from "@/pricing/pricingData";
+import { getPricingData } from "@/constants/pricing-data";
 import CancelSubscription from "./CancelSubscription";
 import PriceItem from "./Pricing";
 

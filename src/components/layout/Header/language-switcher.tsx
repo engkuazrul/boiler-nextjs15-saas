@@ -1,6 +1,6 @@
 "use client";
 
-import { SUPPORTED_LANGUAGES } from "@/i18n/supported-locales";
+import { SUPPORTED_LANGUAGES } from "@/constants/supported-locales";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

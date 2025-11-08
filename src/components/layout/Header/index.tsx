@@ -14,7 +14,7 @@ import Account from "./account";
 import Dropdown from "./dropdown";
 import ThemeSwitcher from "./theme-switcher";
 import { LanguageSwitcher } from "./language-switcher";
-import { menuData } from "./menuData";
+import { menuData } from "@/constants/menu-data";
 
 const Header = () => {
 	const t = useTranslations("header");

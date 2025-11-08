@@ -1,5 +1,5 @@
 "use client";
-import { DataStats } from "@/staticData/statsData";
+import { DataStats } from "@/constants/stats-data";
 import { useTranslations } from "next-intl";
 
 export default function DataStatsCard({ data }: { data: DataStats }) {

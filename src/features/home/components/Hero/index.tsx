@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import brandData from "./brandData";
+import brandData from "@/constants/brand-data";
 
 const Hero = () => {
 	const t = useTranslations("homepage.hero_section");

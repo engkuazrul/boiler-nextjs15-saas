@@ -1,7 +1,7 @@
 "use client";
 import SectionHeader from "@/components/ui/section-header";
 import { PaddleLoader } from "@/paddle/paddleLoader";
-import { getPricingData } from "@/pricing/pricingData";
+import { getPricingData } from "@/constants/pricing-data";
 import { useTranslations } from "next-intl";
 import CancelSubscription from "./CancelSubscription";
 import PriceItem from "./PriceItem";

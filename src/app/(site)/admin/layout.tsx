@@ -5,7 +5,7 @@ import Header from "@/components/ui/dashboard/header";
 import {
 	adminSidebarData,
 	adminSidebarOtherData,
-} from "@/staticData/sidebarData";
+} from "@/constants/sidebar-data";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
 	const [openSidebar, setOpenSidebar] = useState(false);

@@ -1,6 +1,6 @@
 "use client";
 
-import { OverviewData } from "@/staticData/statsData";
+import { OverviewData } from "@/constants/stats-data";
 import { useTranslations } from "next-intl";
 import { Suspense } from "react";
 import ChartOne from "./chart-one";

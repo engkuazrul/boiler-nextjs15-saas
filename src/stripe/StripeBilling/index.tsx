@@ -1,7 +1,7 @@
 "use client";
 
 import SectionHeader from "@/components/ui/section-header";
-import { getPricingData } from "@/pricing/pricingData";
+import { getPricingData } from "@/constants/pricing-data";
 import { useTranslations } from "next-intl";
 import PriceItem from "./PriceItem";
 
