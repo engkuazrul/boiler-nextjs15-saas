@@ -15,4 +15,3 @@ export type FeatureWithImg = {
 	subtitle: string;
 	features: string[];
 };
-

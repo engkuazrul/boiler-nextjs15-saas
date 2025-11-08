@@ -9,4 +9,3 @@ export async function getUpdatedUserData(email: string) {
 		return null;
 	}
 }
-

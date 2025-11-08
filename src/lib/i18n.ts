@@ -54,4 +54,3 @@ export default getRequestConfig(async () => {
 		messages: messages as any,
 	};
 });
-

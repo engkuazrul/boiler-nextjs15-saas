@@ -1,35 +1,30 @@
 import { hashPassword } from "@/utils/crypto";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import {
+	notFoundResponse,
+	successResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import { updatePasswordSchema } from "./schema";
 
 export async function POST(request: Request) {
-	const body = await request.json();
-	const res = updatePasswordSchema.safeParse(body);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(request, updatePasswordSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
+		const { email, password } = validation.data;
 
-	const { email, password } = res.data;
+		const user = await prisma.user.findUnique({
+			where: { email },
+		});
 
-	const user = await prisma.user.findUnique({
-		where: { email },
-	});
+		if (!user) {
+			return notFoundResponse("User does not exist");
+		}
 
-	if (!user) {
-		return NextResponse.json(
-			{ message: "User doesn't exist" },
-			{ status: 404 }
-		);
-	}
+		const hashedPassword = await hashPassword(password);
 
-	const hashedPassword = await hashPassword(password);
-
-	try {
 		await prisma.user.update({
 			where: { email },
 			data: {
@@ -39,8 +34,6 @@ export async function POST(request: Request) {
 			},
 		});
 
-		return NextResponse.json({ message: "Password Updated" }, { status: 200 });
-	} catch (error) {
-		return NextResponse.json({ message: "Internal Error" }, { status: 500 });
-	}
+		return successResponse(undefined, "Password updated successfully");
+	});
 }

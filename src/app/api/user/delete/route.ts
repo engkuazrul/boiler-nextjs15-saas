@@ -1,64 +1,48 @@
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import {
+	errorResponse,
+	notFoundResponse,
+	successResponse,
+	unauthorizedResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
 import { userDeleteSchema } from "./schema";
 
 export async function DELETE(request: Request) {
-	const body = await request.json();
-	const res = userDeleteSchema.safeParse(body);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(request, userDeleteSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
+		const { email } = validation.data;
 
-	const { email } = res.data;
+		if (email.includes("demo-")) {
+			return errorResponse("Cannot delete demo user");
+		}
 
-	const isDemoUser = email?.includes("demo-");
+		const session = await getServerSession(authOptions);
 
-	if (isDemoUser) {
-		return NextResponse.json(
-			{ message: "Can't delete demo user" },
-			{ status: 400 }
-		);
-	}
+		const user = await prisma.user.findUnique({
+			where: { email },
+		});
 
-	const session = await getServerSession(authOptions);
+		if (!user) {
+			return notFoundResponse("User not found");
+		}
 
-	const user = await prisma.user.findUnique({
-		where: { email },
-	});
+		const isAuthorized =
+			session?.user.email === user.email || session?.user.role === "ADMIN";
 
-	if (!user) {
-		return NextResponse.json({ message: "User not found!" }, { status: 404 });
-	}
+		if (!isAuthorized) {
+			return unauthorizedResponse("You are not authorized to delete this user");
+		}
 
-	const isAuthorized =
-		session?.user.email === user.email || user?.role === "ADMIN";
-
-	if (!isAuthorized) {
-		return NextResponse.json(
-			{ message: "Unauthorized Access" },
-			{ status: 401 }
-		);
-	}
-
-	try {
 		await prisma.user.delete({
 			where: { email },
 		});
 
-		return NextResponse.json(
-			{ message: "Account Deleted Successfully!" },
-			{ status: 200 }
-		);
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "Something went wrong" },
-			{ status: 500 }
-		);
-	}
+		return successResponse(undefined, "Account deleted successfully");
+	});
 }

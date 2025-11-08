@@ -1,40 +1,32 @@
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import {
+	successResponse,
+	unauthorizedResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
 import { deleteAPIKeyPayloadSchema } from "./schema";
 
 export async function DELETE(request: Request) {
-	const session = await getServerSession(authOptions);
-	const user = session?.user;
+	return withErrorHandling(async () => {
+		const session = await getServerSession(authOptions);
 
-	if (!user) {
-		return new NextResponse("Unauthorized", { status: 401 });
-	}
+		if (!session?.user) {
+			return unauthorizedResponse("Please sign in to continue");
+		}
 
-	const body = await request.json();
-	const res = deleteAPIKeyPayloadSchema.safeParse(body);
-
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
+		const validation = await validateRequest(
+			request,
+			deleteAPIKeyPayloadSchema
 		);
-	}
+		if (validation instanceof Response) return validation;
 
-	try {
 		await prisma.apiKey.delete({
-			where: { id: res.data.id },
+			where: { id: validation.data.id },
 		});
 
-		return NextResponse.json(
-			{ message: "API Key Deleted Successfully!" },
-			{ status: 200 }
-		);
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "Something went wrong" },
-			{ status: 500 }
-		);
-	}
+		return successResponse(undefined, "API key deleted successfully");
+	});
 }

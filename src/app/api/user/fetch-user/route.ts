@@ -1,35 +1,35 @@
 import { prisma } from "@/lib/prisma";
-import { NextRequest, NextResponse } from "next/server";
+import {
+	errorResponse,
+	successResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { NextRequest } from "next/server";
 import { z } from "zod";
 
 export async function GET(req: NextRequest) {
-	const encodedEmail = req.nextUrl.searchParams.get("email");
-	const email = decodeURIComponent(encodedEmail || "");
+	return withErrorHandling(async () => {
+		const encodedEmail = req.nextUrl.searchParams.get("email");
+		const email = decodeURIComponent(encodedEmail || "");
 
-	if (!email) {
-		return NextResponse.json({ message: "Email is required" }, { status: 400 });
-	}
+		if (!email) {
+			return errorResponse("Email is required");
+		}
 
-	const res = z.string().email().safeParse(email);
+		const emailValidation = z.string().email().safeParse(email);
 
-	if (!res.success) {
-		return NextResponse.json({ message: "Invalid email" }, { status: 400 });
-	}
+		if (!emailValidation.success) {
+			return errorResponse("Invalid email format");
+		}
 
-	try {
 		const user = await prisma.user.findUnique({
 			where: { email },
 		});
 
-		return NextResponse.json(
-			{
-				priceId: user?.priceId,
-				subscriptionId: user?.subscriptionId,
-				currentPeriodEnd: user?.currentPeriodEnd,
-			},
-			{ status: 200 }
-		);
-	} catch (error) {
-		return new NextResponse("Something went wrong", { status: 500 });
-	}
+		return successResponse({
+			priceId: user?.priceId,
+			subscriptionId: user?.subscriptionId,
+			currentPeriodEnd: user?.currentPeriodEnd,
+		});
+	});
 }

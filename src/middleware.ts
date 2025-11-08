@@ -8,7 +8,7 @@ export default withAuth(
 		const isUser = req.nextauth.token?.role === "USER";
 
 		if (pathname.includes("/admin") && !isAdmin) {
-		  return NextResponse.redirect(new URL("/user", req.url));
+			return NextResponse.redirect(new URL("/user", req.url));
 		}
 
 		if (pathname.includes("/user") && !isUser) {

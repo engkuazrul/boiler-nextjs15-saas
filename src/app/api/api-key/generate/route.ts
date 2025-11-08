@@ -1,36 +1,34 @@
-import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import {
+	notFoundResponse,
+	successResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import bcrypt from "bcrypt";
 import { generateAPIKeyPayloadSchema } from "./schema";
 
 export async function POST(request: Request) {
-	const body = await request.json();
-	const res = generateAPIKeyPayloadSchema.safeParse(body);
-
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(
+			request,
+			generateAPIKeyPayloadSchema
 		);
-	}
+		if (validation instanceof Response) return validation;
 
-	const { email, keyName } = res.data;
+		const { email, keyName } = validation.data;
 
-	const user = await prisma.user.findUnique({
-		where: { email },
-	});
+		const user = await prisma.user.findUnique({
+			where: { email },
+		});
 
-	if (!user) {
-		return NextResponse.json({ message: "User not found!" }, { status: 404 });
-	}
+		if (!user) {
+			return notFoundResponse("User not found");
+		}
 
-	// Generate a random key
-	const key = user.role as string;
+		const key = user.role as string;
+		const hashedKey = await bcrypt.hash(key, 10);
 
-	// Hash the key
-	const hashedKey = await bcrypt.hash(key, 10);
-
-	try {
 		await prisma.apiKey.create({
 			data: {
 				name: keyName,
@@ -39,17 +37,9 @@ export async function POST(request: Request) {
 			},
 		});
 
-		return NextResponse.json(
-			{
-				message: "API Key generated successfully",
-				key: hashedKey,
-			},
-			{ status: 200 }
+		return successResponse(
+			{ key: hashedKey },
+			"API key generated successfully"
 		);
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "Something went wrong" },
-			{ status: 500 }
-		);
-	}
+	});
 }

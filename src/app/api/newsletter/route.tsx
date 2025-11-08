@@ -1,54 +1,49 @@
 import axios, { AxiosError } from "axios";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import {
+	errorResponse,
+	successResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import { newsletterPayloadSchema } from "./schema";
 
 export async function POST(req: NextRequest) {
-	const payload = await req.json();
-	const res = newsletterPayloadSchema.safeParse(payload);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(req, newsletterPayloadSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
+		const MailchimpKey = process.env.MAILCHIMP_API_KEY;
+		const MailchimpServer = process.env.MAILCHIMP_API_SERVER;
+		const MailchimpAudience = process.env.MAILCHIMP_AUDIENCE_ID;
 
-	const MailchimpKey = process.env.MAILCHIMP_API_KEY;
-	const MailchimpServer = process.env.MAILCHIMP_API_SERVER;
-	const MailchimpAudience = process.env.MAILCHIMP_AUDIENCE_ID;
+		const customUrl = `https://${MailchimpServer}.api.mailchimp.com/3.0/lists/${MailchimpAudience}/members`;
 
-	const customUrl = `https://${MailchimpServer}.api.mailchimp.com/3.0/lists/${MailchimpAudience}/members`;
-
-	try {
-		const { data } = await axios.post(
-			customUrl,
-			{
-				email_address: res.data.email,
-				status: "subscribed",
-			},
-			{
-				headers: {
-					Authorization: `apikey ${MailchimpKey}`,
-					"Content-Type": "application/json",
-				},
-			}
-		);
-
-		return NextResponse.json(data, { status: 200 });
-	} catch (error) {
-		if (error instanceof AxiosError) {
-			return NextResponse.json(
+		try {
+			const { data } = await axios.post(
+				customUrl,
 				{
-					message: "An error occurred",
-					error: error.response?.data.error.detail,
+					email_address: validation.data.email,
+					status: "subscribed",
 				},
-				{ status: error.response?.status }
+				{
+					headers: {
+						Authorization: `apikey ${MailchimpKey}`,
+						"Content-Type": "application/json",
+					},
+				}
 			);
-		}
 
-		return NextResponse.json(
-			{ error: "Internal Server Error" },
-			{ status: 500 }
-		);
-	}
+			return successResponse(data, "Successfully subscribed to newsletter");
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				return errorResponse(
+					error.response?.data?.error?.detail || "Failed to subscribe",
+					error.response?.status || 500
+				);
+			}
+
+			return errorResponse("Failed to subscribe to newsletter", 500);
+		}
+	});
 }

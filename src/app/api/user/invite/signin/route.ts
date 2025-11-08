@@ -1,50 +1,40 @@
 import { hashPassword } from "@/utils/crypto";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import {
+	conflictResponse,
+	errorResponse,
+	successResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import { inviteSigninSchema } from "./schema";
 
 export async function POST(request: Request) {
-	const body = await request.json();
-	const res = inviteSigninSchema.safeParse(body);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(request, inviteSigninSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
+		const { token, password } = validation.data;
 
-	const { token, password } = res.data;
+		const invitation = await prisma.invitation.findUnique({
+			where: { token },
+			include: { user: true },
+		});
 
-	const invitation = await prisma.invitation.findUnique({
-		where: { token },
-		include: { user: true },
-	});
+		if (!invitation) {
+			return errorResponse("Invalid invitation token");
+		}
 
-	if (!invitation) {
-		return NextResponse.json(
-			{ message: "Invalid invitation token" },
-			{ status: 400 }
-		);
-	}
+		if (invitation.expiresAt < new Date()) {
+			return errorResponse("Invitation token has expired", 410);
+		}
 
-	if (invitation.expiresAt < new Date()) {
-		return NextResponse.json(
-			{ message: "Invitation token expired" },
-			{ status: 410 }
-		);
-	}
+		if (invitation.accepted || invitation.user) {
+			return conflictResponse("Invitation already accepted");
+		}
 
-	if (invitation.accepted || invitation.user) {
-		return NextResponse.json(
-			{ message: "Invitation already accepted" },
-			{ status: 409 }
-		);
-	}
+		const hashedPassword = await hashPassword(password);
 
-	const hashedPassword = await hashPassword(password);
-
-	try {
 		await prisma.$transaction(async (tx) => {
 			const user = await tx.user.create({
 				data: {
@@ -61,11 +51,6 @@ export async function POST(request: Request) {
 			});
 		});
 
-		return NextResponse.json({ message: "Account created" }, { status: 201 });
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "Something went wrong" },
-			{ status: 500 }
-		);
-	}
+		return successResponse(undefined, "Account created successfully", 201);
+	});
 }

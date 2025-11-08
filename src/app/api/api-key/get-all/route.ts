@@ -1,24 +1,26 @@
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import {
+	successResponse,
+	unauthorizedResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
 import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
 
 export async function GET() {
-	const session = await getServerSession(authOptions);
-	const user = session?.user;
+	return withErrorHandling(async () => {
+		const session = await getServerSession(authOptions);
 
-	if (!user) {
-		return NextResponse.json("Unauthorized", { status: 401 });
-	}
+		if (!session?.user) {
+			return unauthorizedResponse("Please sign in to continue");
+		}
 
-	try {
 		const keys = await prisma.apiKey.findMany({
 			where: {
-				userId: user.id,
+				userId: session.user.id,
 			},
 		});
-		return NextResponse.json(keys, { status: 200 });
-	} catch (error) {
-		return new NextResponse("Something went wrong", { status: 500 });
-	}
+
+		return successResponse(keys);
+	});
 }

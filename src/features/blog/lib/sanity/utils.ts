@@ -93,4 +93,3 @@ export const getAuthorBySlug = async (slug: string) => {
 
 	return data;
 };
-

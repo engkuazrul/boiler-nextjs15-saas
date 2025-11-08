@@ -6,4 +6,3 @@ export function excludeFields<
 		Object.entries(record).filter(([key]) => !keys.includes(key as K))
 	) as Omit<T, K>;
 }
-

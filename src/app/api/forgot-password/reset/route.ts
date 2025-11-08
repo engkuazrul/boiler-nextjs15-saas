@@ -1,74 +1,63 @@
 import { sendEmail } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import {
+	errorResponse,
+	notFoundResponse,
+	successResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import crypto from "node:crypto";
 import { resetPasswordSchema } from "./schema";
 
 export async function POST(request: Request) {
-	const body = await request.json();
-	const res = resetPasswordSchema.safeParse(body);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(request, resetPasswordSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
+		const { email } = validation.data;
 
-	const { email } = res.data;
-
-	const user = await prisma.user.findUnique({
-		where: { email },
-	});
-
-	if (!user) {
-		return NextResponse.json(
-			{ message: "User doesn't exist" },
-			{ status: 404 }
-		);
-	}
-
-
-	const resetToken = crypto.randomBytes(20).toString("hex");
-
-	const passwordResetTokenExp = new Date();
-	passwordResetTokenExp.setMinutes(passwordResetTokenExp.getMinutes() + 10);
-
-	await prisma.user.update({
-		where: { email },
-		data: {
-			passwordResetToken: resetToken,
-			passwordResetTokenExp,
-		},
-	});
-
-	const resetURL = `${process.env.SITE_URL}/auth/reset-password/${resetToken}`;
-
-	try {
-		await sendEmail({
-			to: email,
-			subject: "Reset your password",
-			html: ` 
-      <div>
-        <h1>You requested a password reset</h1>
-        <p>Click the link below to reset your password</p>
-        <a href="${resetURL}" target="_blank">Reset Password</a>
-      </div>
-      `,
+		const user = await prisma.user.findUnique({
+			where: { email },
 		});
 
-		return NextResponse.json(
-			{ message: "An email has been sent to your email" },
-			{
-				status: 200,
-			}
-		);
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "An error occurred. Please try again!" },
-			{
-				status: 500,
-			}
-		);
-	}
+		if (!user) {
+			return notFoundResponse("User does not exist");
+		}
+
+		const resetToken = crypto.randomBytes(20).toString("hex");
+		const passwordResetTokenExp = new Date();
+		passwordResetTokenExp.setMinutes(passwordResetTokenExp.getMinutes() + 10);
+
+		await prisma.user.update({
+			where: { email },
+			data: {
+				passwordResetToken: resetToken,
+				passwordResetTokenExp,
+			},
+		});
+
+		const resetURL = `${process.env.SITE_URL}/auth/reset-password/${resetToken}`;
+
+		try {
+			await sendEmail({
+				to: email,
+				subject: "Reset your password",
+				html: ` 
+        <div>
+          <h1>You requested a password reset</h1>
+          <p>Click the link below to reset your password</p>
+          <a href="${resetURL}" target="_blank">Reset Password</a>
+        </div>
+        `,
+			});
+
+			return successResponse(
+				undefined,
+				"Password reset email sent successfully"
+			);
+		} catch (error) {
+			return errorResponse("Failed to send email. Please try again", 500);
+		}
+	});
 }

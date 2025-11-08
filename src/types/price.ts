@@ -19,4 +19,3 @@ export type Price = {
 	icon2?: string;
 	active?: boolean;
 };
-

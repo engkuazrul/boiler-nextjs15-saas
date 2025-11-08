@@ -2,10 +2,10 @@ import { Menu } from "@/types/navigation";
 
 /**
  * Menu data structure
- * 
+ *
  * Each item uses titleKey which corresponds to translation keys in locale files.
  * For example, titleKey: 'features' will use the translation from 'header.features'.
- * 
+ *
  * This allows the menu structure to remain consistent while supporting multiple languages.
  * Actual text content should be stored in locale files (en.json, fr.json, etc.).
  */

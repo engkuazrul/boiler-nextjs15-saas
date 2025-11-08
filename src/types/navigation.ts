@@ -25,4 +25,3 @@ export type Sidebar = {
 	icon: React.ReactNode;
 	comingSoon?: boolean;
 };
-

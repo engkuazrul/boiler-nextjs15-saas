@@ -32,4 +32,3 @@ export default function Notification({ link }: any) {
 		</div>
 	);
 }
-

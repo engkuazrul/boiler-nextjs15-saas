@@ -10,4 +10,3 @@ export const lemonSqueezyApiInstance = axios.create({
 		Authorization: `Bearer ${process.env.LEMON_SQUEEZY_API_KEY}`,
 	},
 });
-

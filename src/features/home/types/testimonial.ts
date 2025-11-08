@@ -8,4 +8,3 @@ export type Testimonial = {
 	image: string;
 	comment: string;
 };
-

@@ -1,85 +1,70 @@
 import { sendEmail } from "@/lib/email";
 import { isAuthorized } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import {
+	conflictResponse,
+	errorResponse,
+	successResponse,
+	unauthorizedResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import crypto from "node:crypto";
 import { invitationSendSchema } from "./schema";
 
 export async function POST(request: Request) {
-	const body = await request.json();
-	const res = invitationSendSchema.safeParse(body);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(request, invitationSendSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
+		const { email, role } = validation.data;
 
-	const { email, role } = res.data;
+		const isAlreadyInvited = await prisma.invitation.findUnique({
+			where: { email },
+		});
 
-	const isAlreadyInvited = await prisma.invitation.findUnique({
-		where: { email },
-	});
+		if (isAlreadyInvited) {
+			return conflictResponse("User already invited");
+		}
 
-	if (isAlreadyInvited) {
-		return NextResponse.json(
-			{ message: "User already invited" },
-			{ status: 409 }
-		);
-	}
+		const user = await isAuthorized();
 
-	const user = await isAuthorized();
+		if (!user || user.role !== "ADMIN") {
+			return unauthorizedResponse("Only administrators can send invitations");
+		}
 
-	if (!user || user.role !== "ADMIN") {
-		return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-	}
+		const token = crypto.randomBytes(32).toString("hex");
 
-	const token = crypto.randomBytes(32).toString("hex");
-
-	try {
 		await prisma.invitation.create({
 			data: {
 				email,
 				token,
 				role,
-				expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24), // 24 hours from now
+				expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24),
 			},
 		});
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "Unable to create invitation link" },
-			{ status: 500 }
-		);
-	}
 
-	// Send invitation email
-	const inviteLink = `${process.env.NEXTAUTH_URL}/auth/invite?token=${token}`;
-	try {
-		await sendEmail({
-			to: email,
-			subject: "Invitation to Login",
-			html: ` 
-      <div>
-        <h1>You have been invited to login to your account</h1>
-        <p>Click the link below login</p>
-        <a href="${inviteLink}" target="_blank">Activate Account</a>
-      </div>
-      `,
-		});
+		const inviteLink = `${process.env.NEXTAUTH_URL}/auth/invite?token=${token}`;
 
-		return NextResponse.json(
-			{ message: "Invitation sent" },
-			{
-				status: 200,
-			}
-		);
-	} catch (error) {
-		return NextResponse.json(
-			{ message: "Unable to send invitation. Please try again!" },
-			{
-				status: 500,
-			}
-		);
-	}
+		try {
+			await sendEmail({
+				to: email,
+				subject: "Invitation to Login",
+				html: ` 
+        <div>
+          <h1>You have been invited to login to your account</h1>
+          <p>Click the link below login</p>
+          <a href="${inviteLink}" target="_blank">Activate Account</a>
+        </div>
+        `,
+			});
+
+			return successResponse(undefined, "Invitation sent successfully");
+		} catch (error) {
+			return errorResponse(
+				"Failed to send invitation email. Please try again",
+				500
+			);
+		}
+	});
 }

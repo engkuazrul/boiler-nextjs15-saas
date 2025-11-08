@@ -4,7 +4,11 @@ import { SUPPORTED_LANGUAGES } from "@/constants/supported-locales";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Dropdown, DropdownContent, DropdownTrigger } from "@/components/ui/dropdown";
+import {
+	Dropdown,
+	DropdownContent,
+	DropdownTrigger,
+} from "@/components/ui/dropdown";
 import { getSelectedLangCode, switchLanguage } from "./action";
 import { ChevronUpIcon } from "./icons";
 

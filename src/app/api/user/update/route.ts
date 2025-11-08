@@ -1,60 +1,47 @@
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import {
+	errorResponse,
+	successResponse,
+	unauthorizedResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
 import { updateUserSchema } from "./schema";
 
 export async function POST(request: Request) {
-	const body = await request.json();
-	const res = updateUserSchema.safeParse(body);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(request, updateUserSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
+		const session = await getServerSession(authOptions);
 
-	const session = await getServerSession(authOptions);
+		if (!session?.user) {
+			return unauthorizedResponse("Please sign in to continue");
+		}
 
-	if (!session?.user) {
-		return NextResponse.json({ message: "User not found!" }, { status: 404 });
-	}
+		if (session.user.email?.includes("demo-")) {
+			return errorResponse("Cannot update demo user");
+		}
 
-	const isDemoUser = session?.user?.email?.includes("demo-");
-
-	if (isDemoUser) {
-		return NextResponse.json(
-			{ message: "Can't update demo user" },
-			{
-				status: 401,
-			}
-		);
-	}
-
-	try {
 		const user = await prisma.user.update({
 			where: {
-				email: session?.user?.email as string,
+				email: session.user.email as string,
 			},
-			data: { ...res.data },
+			data: validation.data,
 		});
 
 		revalidatePath("/user");
 
-		return NextResponse.json(
+		return successResponse(
 			{
-				message: "User Updated Successfully!",
-				data: {
-					email: user.email,
-					name: user.name,
-					image: user.image,
-				},
+				email: user.email,
+				name: user.name,
+				image: user.image,
 			},
-			{ status: 200 }
+			"User updated successfully"
 		);
-	} catch (error) {
-		return new NextResponse("Something went wrong", { status: 500 });
-	}
+	});
 }

@@ -89,4 +89,3 @@ export default function Notifications({ role }: { role?: string }) {
 		</div>
 	);
 }
-

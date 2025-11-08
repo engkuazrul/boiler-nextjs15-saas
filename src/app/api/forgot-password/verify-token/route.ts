@@ -1,40 +1,37 @@
 import { prisma } from "@/lib/prisma";
 import { excludeFields } from "@/utils/data-utils";
-import { NextResponse } from "next/server";
+import {
+	errorResponse,
+	successResponse,
+	withErrorHandling,
+} from "@/lib/api-response";
+import { validateRequest } from "@/lib/api-validation";
 import { verifyTokenSchema } from "./schema";
 
 export const POST = async (request: Request) => {
-	const body = await request.json();
-	const res = verifyTokenSchema.safeParse(body);
+	return withErrorHandling(async () => {
+		const validation = await validateRequest(request, verifyTokenSchema);
+		if (validation instanceof Response) return validation;
 
-	if (!res.success) {
-		return NextResponse.json(
-			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
-			{ status: 400 }
-		);
-	}
-
-	const user = await prisma.user.findUnique({
-		where: {
-			passwordResetToken: res.data.token,
-			passwordResetTokenExp: {
-				gte: new Date(),
+		const user = await prisma.user.findUnique({
+			where: {
+				passwordResetToken: validation.data.token,
+				passwordResetTokenExp: {
+					gte: new Date(),
+				},
 			},
-		},
-	});
+		});
 
-	if (!user) {
-		return NextResponse.json(
-			{ message: "Invalid or expired token" },
-			{ status: 400 }
-		);
-	}
+		if (!user) {
+			return errorResponse("Invalid or expired token");
+		}
 
-	return NextResponse.json(
-		excludeFields(user, [
+		const sanitizedUser = excludeFields(user, [
 			"password",
 			"passwordResetToken",
 			"passwordResetTokenExp",
-		])
-	);
+		]);
+
+		return successResponse(sanitizedUser);
+	});
 };

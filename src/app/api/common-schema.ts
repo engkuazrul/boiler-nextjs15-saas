@@ -4,6 +4,7 @@ const REGEX = {
 	uppercase: /[A-Z]/,
 	lowercase: /[a-z]/,
 	number: /\d/,
+	// eslint-disable-next-line no-useless-escape
 	specialChar: /[!@#$%^&*(),.?":{}|<>_\-+=\[\]\\\/]/,
 };
 

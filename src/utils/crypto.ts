@@ -9,4 +9,3 @@ export async function isValidAPIKey(apiKey: string, role: string) {
 	const isValidKey = await bcrypt.compare(key, apiKey);
 	return isValidKey;
 }
-

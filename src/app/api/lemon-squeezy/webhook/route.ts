@@ -2,7 +2,6 @@ import { hashPassword } from "@/utils/crypto";
 import { prisma } from "@/lib/prisma";
 import crypto from "node:crypto";
 
-
 export async function POST(req: Request) {
 	try {
 		// Catch the event type

@@ -31,4 +31,3 @@ export default function Header({ openSidebar, setOpenSidebar }: any) {
 		</div>
 	);
 }
-

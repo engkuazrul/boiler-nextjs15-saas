@@ -1,4 +1,8 @@
-import { getPostsByAuthor, getAuthorBySlug, imageBuilder } from "@/features/blog/lib/sanity/utils";
+import {
+	getPostsByAuthor,
+	getAuthorBySlug,
+	imageBuilder,
+} from "@/features/blog/lib/sanity/utils";
 import BlogItem from "@/features/blog/components/blog-item";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 import { Author } from "@/features/blog/types/blog";
@@ -11,13 +15,13 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props) {
-    const params = await props.params;
-    const { slug } = params;
-    const author = (await getAuthorBySlug(slug)) as Author;
-    const siteURL = process.env.SITE_URL;
-    const authorName = process.env.AUTHOR_NAME;
+	const params = await props.params;
+	const { slug } = params;
+	const author = (await getAuthorBySlug(slug)) as Author;
+	const siteURL = process.env.SITE_URL;
+	const authorName = process.env.AUTHOR_NAME;
 
-    if (author) {
+	if (author) {
 		return {
 			title: `${
 				author.name || "Author Page"
@@ -67,13 +71,13 @@ export async function generateMetadata(props: Props) {
 }
 
 const BlogGrid = async (props: Props) => {
-    const params = await props.params;
-    const { slug } = params;
+	const params = await props.params;
+	const { slug } = params;
 
-    const posts = await getPostsByAuthor(slug);
-    const author = (await getAuthorBySlug(slug)) as Author;
+	const posts = await getPostsByAuthor(slug);
+	const author = (await getAuthorBySlug(slug)) as Author;
 
-    return (
+	return (
 		<main>
 			<section className='lg:ub-pb-22.5 relative z-1 overflow-hidden pb-17.5 pt-35 xl:pb-27.5'>
 				{/* <!-- bg shapes --> */}

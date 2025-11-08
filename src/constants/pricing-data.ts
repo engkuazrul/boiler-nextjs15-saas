@@ -1,6 +1,10 @@
 import { useTranslations } from "next-intl";
 
-export function getPricingData() {
+/**
+ * Custom hook to get pricing data with translations
+ * Must be called from a React component
+ */
+export function usePricingData() {
 	const t = useTranslations("homepage.pricing_section");
 	const pricingPlans = t.raw("plans");
 
@@ -42,3 +46,6 @@ export function getPricingData() {
 		},
 	];
 }
+
+// Backward compatibility alias
+export const getPricingData = usePricingData;
