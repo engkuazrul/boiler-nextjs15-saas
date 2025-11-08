@@ -1,5 +1,5 @@
-import Breadcrumb from "@/components/Common/Dashboard/Breadcrumb";
-import PurchaseHistory from "@/components/User/PurchaseHistory";
+import Breadcrumb from "@/components/ui/Dashboard/Breadcrumb";
+import PurchaseHistory from "@/features/user/components/PurchaseHistory";
 
 import { isAuthorized } from "@/lib/auth";
 import { Metadata } from "next";

@@ -4,7 +4,7 @@ import { Price } from "@/types/priceItem";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
-import { integrations, messages } from "../../../integrations.config";
+import { integrations, messages } from "@/integrations.config";
 
 type Props = {
 	plan: Price;

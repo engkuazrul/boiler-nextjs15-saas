@@ -1,7 +1,7 @@
 import deepmerge from "deepmerge";
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
-import { integrations } from "../../integrations.config";
+import { integrations } from "@/integrations.config";
 import { SUPPORTED_LOCALES } from "./supported-locales";
 
 export default getRequestConfig(async () => {

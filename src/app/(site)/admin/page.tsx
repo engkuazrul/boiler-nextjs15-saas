@@ -1,6 +1,6 @@
-import DataStatsCard from "@/components/Admin/Dashboard/DataStatsCard";
-import GraphCard from "@/components/Admin/Dashboard/GraphCard";
-import Breadcrumb from "@/components/Common/Dashboard/Breadcrumb";
+import DataStatsCard from "@/features/admin/components/Dashboard/DataStatsCard";
+import GraphCard from "@/features/admin/components/Dashboard/GraphCard";
+import Breadcrumb from "@/components/ui/Dashboard/Breadcrumb";
 import { dataStats, overviewData } from "@/staticData/statsData";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";

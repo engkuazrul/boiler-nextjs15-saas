@@ -1,10 +1,10 @@
-import BlogItem from "@/components/Blog/BlogItem";
-import Breadcrumbs from "@/components/Common/Breadcrumbs";
+import BlogItem from "@/features/blog/components/BlogItem";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { getPosts } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { integrations, messages } from "../../../../integrations.config";
+import { integrations, messages } from "@/integrations.config";
 
 export const metadata: Metadata = {
 	title: `Blog - ${process.env.SITE_NAME}`,

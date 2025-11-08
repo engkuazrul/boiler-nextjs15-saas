@@ -1,4 +1,4 @@
-import NotFound from "@/components/404";
+import NotFound from "@/components/layout/404";
 import React from "react";
 import { Metadata } from "next";
 

@@ -9,7 +9,7 @@ import {
 	postQueryByCategory,
 } from "./sanity-query";
 import { Blog } from "@/types/blog";
-import { integrations } from "../../integrations.config";
+import { integrations } from "@/integrations.config";
 
 export async function sanityFetch<QueryResponse>({
 	query,

@@ -1,5 +1,5 @@
-import AiIntegration from "@/components/Admin/AiIntegration";
-import Breadcrumb from "@/components/Common/Dashboard/Breadcrumb";
+import AiIntegration from "@/features/admin/components/AiIntegration";
+import Breadcrumb from "@/components/ui/Dashboard/Breadcrumb";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

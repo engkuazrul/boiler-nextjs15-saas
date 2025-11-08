@@ -1,5 +1,5 @@
 import React from "react";
-import Support from "@/components/Support";
+import Support from "@/features/support/components";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

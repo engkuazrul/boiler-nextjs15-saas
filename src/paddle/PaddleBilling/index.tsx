@@ -1,5 +1,5 @@
 "use client";
-import SectionHeader from "@/components/Common/SectionHeader";
+import SectionHeader from "@/components/ui/SectionHeader";
 import { PaddleLoader } from "@/paddle/paddleLoader";
 import { getPricingData } from "@/pricing/pricingData";
 import { useTranslations } from "next-intl";

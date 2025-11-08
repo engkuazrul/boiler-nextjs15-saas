@@ -1,6 +1,6 @@
 import { getPostsByAuthor, getAuthorBySlug } from "@/sanity/sanity-utils";
-import BlogItem from "@/components/Blog/BlogItem";
-import Breadcrumbs from "@/components/Common/Breadcrumbs";
+import BlogItem from "@/features/blog/components/BlogItem";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { Author } from "@/types/blog";
 import Image from "next/image";
 import { imageBuilder } from "@/sanity/sanity-utils";

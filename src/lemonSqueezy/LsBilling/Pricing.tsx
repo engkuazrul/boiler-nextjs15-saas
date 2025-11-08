@@ -3,7 +3,7 @@ import axios from "axios";
 import { Price } from "@/types/priceItem";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { integrations, messages } from "../../../integrations.config";
+import { integrations, messages } from "@/integrations.config";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import { getUpdatedUserData } from "@/utils/fetch-user";
