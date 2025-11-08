@@ -16,13 +16,26 @@ export type Author = {
 	_ref?: number | string;
 };
 
+export type SanitySlug = {
+	current: string;
+	_type: string;
+};
+
+export type SanityImage = {
+	_type: string;
+	asset: {
+		_ref: string;
+		_type: string;
+	};
+};
+
 export type Blog = {
 	_id: number;
 	title: string;
-	slug: any;
+	slug: SanitySlug;
 	metadata: string;
 	body: PortableTextBlock[];
-	mainImage: any;
+	mainImage: SanityImage;
 	author: Author;
 	tags: string[];
 	publishedAt: string;

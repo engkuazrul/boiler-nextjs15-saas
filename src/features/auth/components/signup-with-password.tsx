@@ -118,7 +118,7 @@ const SignupWithPassword = () => {
 				<InputGroup
 					label={t("name.label")}
 					placeholder={t("name.placeholder")}
-					maxlength='10'
+					maxlength={10}
 					type='text'
 					name='name'
 					required

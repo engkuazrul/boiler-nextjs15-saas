@@ -1,7 +1,15 @@
 import Card from "@/components/ui/form/card";
 import { useTranslations } from "next-intl";
 
-const DeleteAccount = ({ setShowDeleteModal, showDeleteModal }: any) => {
+interface DeleteAccountProps {
+	setShowDeleteModal: (show: boolean) => void;
+	showDeleteModal: boolean;
+}
+
+const DeleteAccount = ({
+	setShowDeleteModal,
+	showDeleteModal,
+}: DeleteAccountProps) => {
 	const t = useTranslations("account_settings_page.danger_zone");
 
 	return (

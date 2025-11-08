@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 			},
 		});
 
-		const formatedPassword = await hashPassword("guset-user");
+		const formatedPassword = await hashPassword("guest-user");
 
 		if (!exist) {
 			await prisma.user.create({

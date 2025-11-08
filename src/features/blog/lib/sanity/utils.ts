@@ -31,7 +31,8 @@ export async function sanityFetch<QueryResponse>({
 	}
 }
 
-export function imageBuilder(source: string) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function imageBuilder(source: any) {
 	return ImageUrlBuilder(clientConfig).image(source);
 }
 

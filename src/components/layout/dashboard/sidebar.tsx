@@ -4,12 +4,27 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RefObject } from "react";
+
+interface SidebarItem {
+	id?: string | number;
+	path: string;
+	icon: React.ReactNode;
+	titleKey: string;
+	comingSoon?: boolean;
+}
+
+interface SidebarProps {
+	sidebarOthersData?: SidebarItem[];
+	sidebarData?: SidebarItem[];
+	sidebarRef?: RefObject<HTMLDivElement>;
+}
 
 export default function Sidebar({
 	sidebarOthersData,
 	sidebarData,
 	sidebarRef,
-}: any) {
+}: SidebarProps) {
 	const pathname = usePathname();
 	const t = useTranslations("sidebar");
 
@@ -41,7 +56,7 @@ export default function Sidebar({
 					</p>
 					<ul className='space-y-2'>
 						{sidebarData &&
-							sidebarData?.map((item: any, key: number) => (
+							sidebarData?.map((item, key) => (
 								<li key={key}>
 									<Link
 										href={item?.path}
@@ -77,7 +92,7 @@ export default function Sidebar({
 							{t("others")}
 						</p>
 						<ul className='space-y-2'>
-							{sidebarOthersData?.map((item: any) => (
+							{sidebarOthersData?.map((item) => (
 								<li key={item?.id}>
 									<Link
 										href={`${item?.path}`}

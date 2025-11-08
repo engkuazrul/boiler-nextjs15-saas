@@ -1,4 +1,9 @@
-export default function FormButton({ height, children }: any) {
+interface FormButtonProps {
+	height?: string;
+	children: React.ReactNode;
+}
+
+export default function FormButton({ height, children }: FormButtonProps) {
 	return (
 		<button
 			type='submit'

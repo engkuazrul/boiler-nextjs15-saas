@@ -51,6 +51,7 @@ export default getRequestConfig(async () => {
 
 	return {
 		locale,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		messages: messages as any,
 	};
 });

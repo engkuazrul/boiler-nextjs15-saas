@@ -1,7 +1,19 @@
 "use client";
 import { useId, useState } from "react";
 
-export default function InputGroup(props: any) {
+interface InputGroupProps {
+	name: string;
+	label: string;
+	value?: string;
+	type: string;
+	placeholder?: string;
+	handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	height?: string;
+	required?: boolean;
+	maxlength?: number;
+}
+
+export default function InputGroup(props: InputGroupProps) {
 	const {
 		name,
 		label,

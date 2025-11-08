@@ -22,8 +22,11 @@ export default function GlobalSearchModal(props: Props) {
 
 	useEffect(() => {
 		// closing modal while clicking outside
-		function handleClickOutside(event: any) {
-			if (!event.target.closest(".modal-content")) {
+		function handleClickOutside(event: MouseEvent) {
+			if (
+				event.target instanceof Element &&
+				!event.target.closest(".modal-content")
+			) {
 				setSearchModalOpen(false);
 			}
 		}

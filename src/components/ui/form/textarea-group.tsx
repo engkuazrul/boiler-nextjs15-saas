@@ -1,6 +1,15 @@
 "use client";
 
-export default function TextareaGroup(props: any) {
+interface TextareaGroupProps {
+	name: string;
+	label: string;
+	value: string;
+	placeholder?: string;
+	handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+	rows?: number;
+}
+
+export default function TextareaGroup(props: TextareaGroupProps) {
 	const { name, label, value, placeholder, handleChange, rows } = props;
 
 	return (
