@@ -1,4 +1,4 @@
-import { prisma } from "@/libs/prismaDb";
+import { prisma } from "@/lib/prismaDb";
 import { excludeFields } from "@/utils/exclude-fields";
 import { NextResponse } from "next/server";
 import { verifyTokenSchema } from "./schema";

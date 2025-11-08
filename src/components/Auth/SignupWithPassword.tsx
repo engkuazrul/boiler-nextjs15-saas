@@ -1,6 +1,6 @@
 import FormButton from "@/components/Common/Dashboard/FormButton";
 import InputGroup from "@/components/Common/Dashboard/InputGroup";
-import { rateLimitByIp } from "@/libs/limiter";
+import { rateLimitByIp } from "@/lib/limiter";
 import axios, { AxiosError } from "axios";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";

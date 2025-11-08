@@ -1,5 +1,5 @@
-import { isAuthorized } from "@/libs/isAuthorized";
-import { absoluteUrl } from "@/libs/uitls";
+import { isAuthorized } from "@/lib/isAuthorized";
+import { absoluteUrl } from "@/lib/uitls";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { paymentSchema } from "./schema";

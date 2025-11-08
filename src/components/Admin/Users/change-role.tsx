@@ -5,7 +5,7 @@ import {
 	DropdownContent,
 	DropdownTrigger,
 } from "@/components/dropdown";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 type PropsType = {

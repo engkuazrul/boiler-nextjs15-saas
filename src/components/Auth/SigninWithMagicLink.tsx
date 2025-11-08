@@ -1,4 +1,4 @@
-import { rateLimitByIp } from "@/libs/limiter";
+import { rateLimitByIp } from "@/lib/limiter";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";

@@ -1,7 +1,7 @@
 "use client";
 import logoLight from "@/../public/images/logo/logo-light.svg";
 import logo from "@/../public/images/logo/logo.svg";
-import { onScroll } from "@/libs/scrollActive";
+import { onScroll } from "@/lib/scrollActive";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";

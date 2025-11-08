@@ -1,5 +1,5 @@
-import { authOptions } from "@/libs/auth";
-import { prisma } from "@/libs/prismaDb";
+import { authOptions } from "@/lib/auth";
+import { prisma } from "@/lib/prismaDb";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";

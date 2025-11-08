@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { integrations, messages } from "../../../integrations.config";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
-import getUpdatedData from "@/libs/getUpdatedData";
+import getUpdatedData from "@/lib/getUpdatedData";
 
 type Props = {
 	plan: Price;

@@ -1,6 +1,6 @@
-import { sendEmail } from "@/libs/email";
-import { isAuthorized } from "@/libs/isAuthorized";
-import { prisma } from "@/libs/prismaDb";
+import { sendEmail } from "@/lib/email";
+import { isAuthorized } from "@/lib/isAuthorized";
+import { prisma } from "@/lib/prismaDb";
 import { NextResponse } from "next/server";
 import crypto from "node:crypto";
 import { invitationSendSchema } from "./schema";

@@ -1,4 +1,4 @@
-import { prisma } from "@/libs/prismaDb";
+import { prisma } from "@/lib/prismaDb";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 import { createHmac } from "node:crypto";

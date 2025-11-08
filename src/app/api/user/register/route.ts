@@ -1,4 +1,4 @@
-import { prisma } from "@/libs/prismaDb";
+import { prisma } from "@/lib/prismaDb";
 import { excludeFields } from "@/utils/exclude-fields";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
