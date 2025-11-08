@@ -5,7 +5,7 @@ const integrations = {
 	isMailchimpEnabled: false,
 	isAuthEnabled: true,
 	isPaymentsEnabled: true,
-	isI18nEnabled: false,
+	isI18nEnabled: true,
 };
 
 const messages = {
