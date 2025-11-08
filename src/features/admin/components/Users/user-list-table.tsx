@@ -2,7 +2,7 @@
 
 import type { User } from "@prisma/client";
 import { useTranslations } from "next-intl";
-import UserAction from "./UserAction";
+import UserAction from "./user-action";
 
 export default function UserListTable({ users }: { users: User[] }) {
 	const t = useTranslations("manage_users_page.table_header");

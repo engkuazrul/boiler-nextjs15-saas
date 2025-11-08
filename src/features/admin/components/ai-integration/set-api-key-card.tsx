@@ -2,7 +2,7 @@
 import Card from "@/components/ui/dashboard/card";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import SetApiKeyModal from "./SetApiKeyModal";
+import SetApiKeyModal from "./set-api-key-modal";
 
 export default function SetApiKeyCard() {
 	const [showModal, setShowModal] = useState(false);

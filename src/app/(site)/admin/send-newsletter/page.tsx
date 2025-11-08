@@ -1,4 +1,4 @@
-import SendNewsletterCard from "@/features/admin/components/SendNewsletter/SendNewsletterCard";
+import SendNewsletterCard from "@/features/admin/components/send-newsletter/send-newsletter-card";
 import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";

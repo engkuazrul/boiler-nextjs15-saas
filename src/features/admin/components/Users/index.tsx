@@ -1,8 +1,8 @@
 import { getUsers } from "@/features/admin/actions/user";
 import type { User } from "@prisma/client";
-import UserEmptyState from "./UserEmptyState";
-import UserListTable from "./UserListTable";
-import UserTopbar from "./UserTopbar";
+import UserEmptyState from "./user-empty-state";
+import UserListTable from "./user-list-table";
+import UserTopbar from "./user-topbar";
 
 export const revalidate = 0;
 

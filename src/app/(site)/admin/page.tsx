@@ -1,5 +1,5 @@
-import DataStatsCard from "@/features/admin/components/Dashboard/DataStatsCard";
-import GraphCard from "@/features/admin/components/Dashboard/GraphCard";
+import DataStatsCard from "@/features/admin/components/dashboard/data-stats-card";
+import GraphCard from "@/features/admin/components/dashboard/graph-card";
 import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
 import { dataStats, overviewData } from "@/staticData/statsData";
 import { Metadata } from "next";

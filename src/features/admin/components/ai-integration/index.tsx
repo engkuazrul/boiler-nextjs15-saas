@@ -3,9 +3,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { integrations, messages } from "@/integrations.config";
-import InputCard from "./InputCard";
-import OutputCard from "./OutputCard";
-import SetApiKeyCard from "./SetApiKeyCard";
+import InputCard from "./input-card";
+import OutputCard from "./output-card";
+import SetApiKeyCard from "./set-api-key-card";
 
 const AiIntegration = ({ APIKey }: { APIKey: string }) => {
 	const [data, setData] = useState({

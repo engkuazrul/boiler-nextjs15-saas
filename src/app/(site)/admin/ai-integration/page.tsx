@@ -1,4 +1,4 @@
-import AiIntegration from "@/features/admin/components/AiIntegration";
+import AiIntegration from "@/features/admin/components/ai-integration";
 import Breadcrumb from "@/components/ui/dashboard/breadcrumb";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";

@@ -3,7 +3,7 @@
 import { OverviewData } from "@/staticData/statsData";
 import { useTranslations } from "next-intl";
 import { Suspense } from "react";
-import ChartOne from "./ChartOne";
+import ChartOne from "./chart-one";
 
 export default function GraphCard({ data }: { data: OverviewData }) {
 	const t = useTranslations("admin_page.overview.stats");
