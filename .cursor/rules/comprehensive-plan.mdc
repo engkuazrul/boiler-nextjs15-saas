@@ -1,0 +1,11 @@
+---
+alwaysApply: false
+---
+
+Before writing any code, create a brief implementation plan (just key steps, minimal detail).
+Show it to me and wait for feedback.
+Approval Gate:
+
+If I say “OK”, proceed to code.
+
+If I request changes, revise the plan and wait for confirmation.
