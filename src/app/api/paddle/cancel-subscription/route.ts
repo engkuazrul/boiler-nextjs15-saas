@@ -1,10 +1,10 @@
 import axios, { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
-import { paddleCancelSubscriptionSchema } from "./schema";
+import { cancelSubscriptionSchema } from "@/features/billing-paddle/schemas";
 
 async function POST(req: NextRequest) {
 	const body = await req.json();
-	const res = paddleCancelSubscriptionSchema.safeParse(body);
+	const res = cancelSubscriptionSchema.safeParse(body);
 
 	if (!res.success) {
 		return NextResponse.json(

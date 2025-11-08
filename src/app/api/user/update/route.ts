@@ -9,7 +9,7 @@ import {
 import { validateRequest } from "@/lib/api-validation";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { updateUserSchema } from "./schema";
+import { updateUserSchema } from "@/features/user/schemas";
 
 export async function POST(request: Request) {
 	return withErrorHandling(async () => {

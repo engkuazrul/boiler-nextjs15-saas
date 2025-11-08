@@ -1,10 +1,10 @@
 import axios from "axios";
 import { NextResponse } from "next/server";
-import { paddleChangePlanSchema } from "./schema";
+import { changePlanSchema } from "@/features/billing-paddle/schemas";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const res = paddleChangePlanSchema.safeParse(body);
+	const res = changePlanSchema.safeParse(body);
 
 	if (!res.success) {
 		return NextResponse.json(

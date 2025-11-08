@@ -6,7 +6,7 @@ import {
 	withErrorHandling,
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
-import { verifyTokenSchema } from "./schema";
+import { verifyTokenSchema } from "@/features/auth/schemas";
 
 export const POST = async (request: Request) => {
 	return withErrorHandling(async () => {

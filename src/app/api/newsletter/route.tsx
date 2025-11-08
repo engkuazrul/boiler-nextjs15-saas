@@ -6,11 +6,11 @@ import {
 	withErrorHandling,
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
-import { newsletterPayloadSchema } from "./schema";
+import { newsletterSchema } from "@/features/home/schemas";
 
 export async function POST(req: NextRequest) {
 	return withErrorHandling(async () => {
-		const validation = await validateRequest(req, newsletterPayloadSchema);
+		const validation = await validateRequest(req, newsletterSchema);
 		if (validation instanceof Response) return validation;
 
 		const MailchimpKey = process.env.MAILCHIMP_API_KEY;

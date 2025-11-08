@@ -1,6 +1,6 @@
 import { lemonSqueezyApiInstance } from "@/features/billing-lemon-squeezy/lib/lemon-squeezy";
 import { NextResponse } from "next/server";
-import { lemonSqueezyPaymentSchema } from "./schema";
+import { paymentSchema } from "@/features/billing-lemon-squeezy/schemas";
 
 export const dynamic = "force-dynamic";
 
@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 	try {
 		const payload = await req.json();
 
-		const res = lemonSqueezyPaymentSchema.safeParse(payload);
+		const res = paymentSchema.safeParse(payload);
 
 		if (!res.success) {
 			return NextResponse.json(

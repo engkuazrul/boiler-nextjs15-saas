@@ -10,7 +10,7 @@ import {
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
 import crypto from "node:crypto";
-import { invitationSendSchema } from "./schema";
+import { invitationSendSchema } from "@/features/auth/schemas";
 
 export async function POST(request: Request) {
 	return withErrorHandling(async () => {

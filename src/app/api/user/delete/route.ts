@@ -9,11 +9,11 @@ import {
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
 import { getServerSession } from "next-auth";
-import { userDeleteSchema } from "./schema";
+import { deleteUserSchema } from "@/features/user/schemas";
 
 export async function DELETE(request: Request) {
 	return withErrorHandling(async () => {
-		const validation = await validateRequest(request, userDeleteSchema);
+		const validation = await validateRequest(request, deleteUserSchema);
 		if (validation instanceof Response) return validation;
 
 		const { email } = validation.data;

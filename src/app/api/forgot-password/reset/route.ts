@@ -8,11 +8,11 @@ import {
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
 import crypto from "node:crypto";
-import { resetPasswordSchema } from "./schema";
+import { forgotPasswordSchema } from "@/features/auth/schemas";
 
 export async function POST(request: Request) {
 	return withErrorHandling(async () => {
-		const validation = await validateRequest(request, resetPasswordSchema);
+		const validation = await validateRequest(request, forgotPasswordSchema);
 		if (validation instanceof Response) return validation;
 
 		const { email } = validation.data;

@@ -6,11 +6,11 @@ import {
 	withErrorHandling,
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
-import { updatePasswordSchema } from "./schema";
+import { resetPasswordSchema } from "@/features/auth/schemas";
 
 export async function POST(request: Request) {
 	return withErrorHandling(async () => {
-		const validation = await validateRequest(request, updatePasswordSchema);
+		const validation = await validateRequest(request, resetPasswordSchema);
 		if (validation instanceof Response) return validation;
 
 		const { email, password } = validation.data;

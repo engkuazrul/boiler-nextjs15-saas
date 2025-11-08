@@ -7,7 +7,7 @@ import {
 	withErrorHandling,
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
-import { inviteSigninSchema } from "./schema";
+import { inviteSigninSchema } from "@/features/auth/schemas";
 
 export async function POST(request: Request) {
 	return withErrorHandling(async () => {

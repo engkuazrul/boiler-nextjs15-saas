@@ -1,7 +1,7 @@
 import { isAuthorized } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { paymentSchema } from "./schema";
+import { paymentSchema } from "@/features/billing-stripe/schemas";
 
 const absoluteUrl = (path: string) =>
 	`${process.env.SITE_URL || "http://localhost:3000"}${path}`;

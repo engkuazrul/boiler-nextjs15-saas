@@ -6,14 +6,11 @@ import {
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
 import bcrypt from "bcrypt";
-import { generateAPIKeyPayloadSchema } from "./schema";
+import { generateAPIKeySchema } from "@/features/user/schemas";
 
 export async function POST(request: Request) {
 	return withErrorHandling(async () => {
-		const validation = await validateRequest(
-			request,
-			generateAPIKeyPayloadSchema
-		);
+		const validation = await validateRequest(request, generateAPIKeySchema);
 		if (validation instanceof Response) return validation;
 
 		const { email, keyName } = validation.data;

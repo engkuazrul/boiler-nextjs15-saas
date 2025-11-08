@@ -7,7 +7,7 @@ import {
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
 import { getServerSession } from "next-auth";
-import { deleteAPIKeyPayloadSchema } from "./schema";
+import { deleteAPIKeySchema } from "@/features/user/schemas";
 
 export async function DELETE(request: Request) {
 	return withErrorHandling(async () => {
@@ -17,10 +17,7 @@ export async function DELETE(request: Request) {
 			return unauthorizedResponse("Please sign in to continue");
 		}
 
-		const validation = await validateRequest(
-			request,
-			deleteAPIKeyPayloadSchema
-		);
+		const validation = await validateRequest(request, deleteAPIKeySchema);
 		if (validation instanceof Response) return validation;
 
 		await prisma.apiKey.delete({

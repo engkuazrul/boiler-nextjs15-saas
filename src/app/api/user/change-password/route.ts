@@ -7,7 +7,7 @@ import {
 } from "@/lib/api-response";
 import { validateRequest } from "@/lib/api-validation";
 import bcrypt from "bcrypt";
-import { changePasswordSchema } from "./schema";
+import { changePasswordSchema } from "@/features/auth/schemas";
 
 export async function POST(request: Request) {
 	return withErrorHandling(async () => {

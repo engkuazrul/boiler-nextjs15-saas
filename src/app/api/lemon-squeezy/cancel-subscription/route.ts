@@ -1,12 +1,12 @@
-import { lemonSqueezyCancelSubscriptionSchema } from "./schema";
 // https://api.lemonsqueezy.com/v1/subscriptions/{subscription_id}
 
 import axios, { AxiosError } from "axios";
+import { cancelSubscriptionSchema } from "@/features/billing-lemon-squeezy/schemas";
 import { NextRequest, NextResponse } from "next/server";
 
 async function POST(req: NextRequest) {
 	const body = await req.json();
-	const res = lemonSqueezyCancelSubscriptionSchema.safeParse(body);
+	const res = cancelSubscriptionSchema.safeParse(body);
 
 	if (!res.success) {
 		return NextResponse.json(
