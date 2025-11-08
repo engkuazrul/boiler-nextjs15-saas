@@ -1,5 +1,5 @@
 "use client";
-import { rateLimitByIp } from "@/lib/limiter";
+import { rateLimitByIp } from "@/lib/rate-limit";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";

@@ -1,8 +1,25 @@
 "use server";
 
-import { getIp } from "./get-ip";
+import { headers } from "next/headers";
 
 const trackers: Record<string, { count: number; expiresAt: number }> = {};
+
+async function getIp() {
+	const headersList = await headers();
+
+	const forwardedFor = headersList.get("x-forwarded-for");
+	const realIp = headersList.get("x-real-ip");
+
+	if (forwardedFor) {
+		return forwardedFor.split(",")[0].trim();
+	}
+
+	if (realIp) {
+		return realIp.trim();
+	}
+
+	return null;
+}
 
 export async function rateLimitByIp(limit = 1, windowMs = 10000) {
 	const ip = await getIp();

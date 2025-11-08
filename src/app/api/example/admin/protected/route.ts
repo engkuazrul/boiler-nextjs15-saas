@@ -1,6 +1,6 @@
 // return hello world
 import { NextResponse, NextRequest } from "next/server";
-import isValidKey from "@/lib/isValidAPIKey";
+import { isValidAPIKey } from "@/utils/crypto";
 
 export async function GET(req: NextRequest) {
 	const apiKey = req.headers.get("Authorization") as string;
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
 		return new NextResponse("Missing API Key", { status: 401 });
 	}
 
-	const isValid = await isValidKey(apiKey, "ADMIN");
+	const isValid = await isValidAPIKey(apiKey, "ADMIN");
 
 	if (!isValid) {
 		return new NextResponse("In valid API Key", { status: 401 });

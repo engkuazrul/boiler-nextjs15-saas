@@ -1,4 +1,4 @@
-export default async function getUpdatedData(email: string) {
+export async function getUpdatedUserData(email: string) {
 	try {
 		const res = await fetch(
 			`/api/user/fetch-user?email=${encodeURIComponent(email)}`
@@ -9,3 +9,4 @@ export default async function getUpdatedData(email: string) {
 		return null;
 	}
 }
+

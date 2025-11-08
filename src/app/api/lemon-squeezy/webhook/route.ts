@@ -1,5 +1,5 @@
-import hashPassword from "@/lib/formatPassword";
-import { prisma } from "@/lib/prismaDb";
+import { hashPassword } from "@/utils/crypto";
+import { prisma } from "@/lib/prisma";
 import crypto from "node:crypto";
 
 

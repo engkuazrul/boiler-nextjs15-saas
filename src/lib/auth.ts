@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prismaDb";
+import { prisma } from "@/lib/prisma";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { User } from "@prisma/client";
 import bcrypt from "bcrypt";
@@ -226,4 +226,9 @@ export const authOptions: NextAuthOptions = {
 
 export const getAuthSession = async () => {
 	return getServerSession(authOptions);
+};
+
+export const isAuthorized = async () => {
+	const session = await getServerSession(authOptions);
+	return session?.user;
 };

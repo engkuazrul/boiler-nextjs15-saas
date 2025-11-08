@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { integrations, messages } from "../../../integrations.config";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
-import getUpdatedData from "@/lib/getUpdatedData";
+import { getUpdatedUserData } from "@/utils/fetch-user";
 
 type Props = {
 	plan: Price;
@@ -24,7 +24,7 @@ const PriceItem = ({ plan, isBilling }: Props) => {
 			if (status === "loading") return;
 			if (!user?.email) return;
 			try {
-				const data = await getUpdatedData(user.email);
+				const data = await getUpdatedUserData(user.email);
 				if (!data) return;
 
 				await update({

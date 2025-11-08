@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/Common/Dashboard/Breadcrumb";
 import PurchaseHistory from "@/components/User/PurchaseHistory";
 
-import { isAuthorized } from "@/lib/isAuthorized";
+import { isAuthorized } from "@/lib/auth";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

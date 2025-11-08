@@ -1,6 +1,6 @@
 "use client";
 
-import { isAuthorized } from "@/lib/isAuthorized";
+import { isAuthorized } from "@/lib/auth";
 import { getPricingData } from "@/pricing/pricingData";
 import PurchaseEmptyState from "./PurchaseEmptyState";
 import PurchaseTable from "./PurchaseTable";

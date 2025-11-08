@@ -1,7 +1,7 @@
 "use server";
 
-import { isAuthorized } from "@/lib/isAuthorized";
-import { prisma } from "@/lib/prismaDb";
+import { isAuthorized } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import { revalidatePath } from "next/cache";
 

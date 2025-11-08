@@ -1,8 +1,8 @@
 "use server";
 
-import { isAuthorized } from "@/lib/isAuthorized";
-import { prisma } from "@/lib/prismaDb";
-import { excludeFields } from "@/utils/exclude-fields";
+import { isAuthorized } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { excludeFields } from "@/utils/ui-utils";
 
 export async function getUsers(filter: any) {
 	const currentUser = await isAuthorized();

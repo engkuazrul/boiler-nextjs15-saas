@@ -1,8 +1,10 @@
-import { isAuthorized } from "@/lib/isAuthorized";
-import { absoluteUrl } from "@/lib/uitls";
+import { isAuthorized } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { paymentSchema } from "./schema";
+
+const absoluteUrl = (path: string) =>
+	`${process.env.SITE_URL || "http://localhost:3000"}${path}`;
 
 export async function POST(request: Request) {
 	const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {

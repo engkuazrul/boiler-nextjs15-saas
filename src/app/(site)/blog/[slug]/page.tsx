@@ -1,7 +1,7 @@
 import RenderBodyContent from "@/components/Blog/RenderBodyContent";
 import SocialShare from "@/components/Blog/SocialShare";
 import CopyToClipboard from "@/components/Common/CopyToClipboard";
-import { structuredAlgoliaHtmlData } from "@/lib/crawlIndex";
+import { structuredAlgoliaHtmlData } from "@/lib/algolia-search";
 import { getPostBySlug, imageBuilder } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";
 import { getTranslations } from "next-intl/server";

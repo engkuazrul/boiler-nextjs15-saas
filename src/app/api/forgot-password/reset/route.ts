@@ -1,5 +1,5 @@
 import { sendEmail } from "@/lib/email";
-import { prisma } from "@/lib/prismaDb";
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import crypto from "node:crypto";
 import { resetPasswordSchema } from "./schema";

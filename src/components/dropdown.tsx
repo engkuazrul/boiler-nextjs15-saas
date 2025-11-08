@@ -1,7 +1,7 @@
 "use client";
 
 import { useClickOutside } from "@/hooks/use-click-outside";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/ui-utils";
 import { SetStateActionType } from "@/types/set-state-action-type";
 import { getScrollBarWidth } from "@/utils/get-scrollbar-width";
 import { createContext, useContext, useEffect, useId, useRef } from "react";

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prismaDb";
+import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import { generateAPIKeyPayloadSchema } from "./schema";
 

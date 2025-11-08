@@ -12,18 +12,22 @@ export function onScroll() {
 	for (let i = 0; i < sections.length; i++) {
 		const currLink = sections[i];
 		const val = currLink.getAttribute("href");
-		const newVal = val.replace(/\//g, "");
-		const refElement = newVal && document.querySelector(newVal);
+		const newVal = val?.replace(/\//g, "");
+		const refElement = newVal
+			? (document.querySelector(newVal) as HTMLElement | null)
+			: null;
 		const scrollTopMinus = scrollPos + 73;
 		if (
 			refElement &&
 			refElement.offsetTop <= scrollTopMinus &&
 			refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
 		) {
-			document.querySelector(".menu-scroll").classList.remove("active");
+			document.querySelector(".menu-scroll")?.classList.remove("active");
 			currLink.classList.add("active");
 		} else {
 			currLink.classList.remove("active");
 		}
 	}
 }
+
+

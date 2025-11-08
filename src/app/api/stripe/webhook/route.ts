@@ -1,5 +1,5 @@
-import hashPassword from "@/lib/formatPassword";
-import { prisma } from "@/lib/prismaDb";
+import { hashPassword } from "@/utils/crypto";
+import { prisma } from "@/lib/prisma";
 import { stripe } from "@/stripe/stripe";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
