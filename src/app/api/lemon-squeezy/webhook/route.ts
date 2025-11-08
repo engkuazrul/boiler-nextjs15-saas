@@ -1,4 +1,4 @@
-import { hashPassword } from "@/utils/crypto";
+import { hashPassword } from "@/lib/crypto";
 import { prisma } from "@/lib/prisma";
 import crypto from "node:crypto";
 

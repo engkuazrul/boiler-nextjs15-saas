@@ -1,4 +1,4 @@
-import { hashPassword } from "@/utils/crypto";
+import { hashPassword } from "@/lib/crypto";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/stripe/stripe";
 import { revalidatePath } from "next/cache";
