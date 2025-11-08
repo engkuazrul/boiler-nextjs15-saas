@@ -1,3 +1,8 @@
+/**
+ * Pricing type for subscription plans
+ * Used by multiple billing integrations (Stripe, Paddle, LemonSqueezy)
+ */
+
 export type Price = {
 	priceId?: string;
 	subscriptionId?: string;
@@ -14,3 +19,4 @@ export type Price = {
 	icon2?: string;
 	active?: boolean;
 };
+

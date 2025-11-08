@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { Price } from "@/types/priceItem";
+import { Price } from "@/types/price";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { integrations, messages } from "@/integrations.config";

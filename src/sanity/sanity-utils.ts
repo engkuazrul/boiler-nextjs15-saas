@@ -8,7 +8,7 @@ import {
 	postQueryByAuthor,
 	postQueryByCategory,
 } from "./sanity-query";
-import { Blog } from "@/types/blog";
+import { Blog } from "@/features/blog/types/blog";
 import { integrations } from "@/integrations.config";
 
 export async function sanityFetch<QueryResponse>({

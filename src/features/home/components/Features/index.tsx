@@ -1,5 +1,5 @@
 import SectionHeader from "@/components/ui/section-header";
-import type { FeatureItem } from "@/types/featureItem";
+import type { FeatureItem } from "@/features/home/types/feature";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 

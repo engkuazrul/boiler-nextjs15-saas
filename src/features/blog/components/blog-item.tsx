@@ -1,5 +1,5 @@
 import React from "react";
-import { Blog } from "@/types/blog";
+import { Blog } from "@/features/blog/types/blog";
 import Image from "next/image";
 import { imageBuilder } from "@/sanity/sanity-utils";
 import Link from "next/link";

@@ -1,5 +1,5 @@
 import config from "@/sanity/config/client-config";
-import { Blog } from "@/types/blog";
+import { Blog } from "@/features/blog/types/blog";
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import urlBuilder from "@sanity/image-url";

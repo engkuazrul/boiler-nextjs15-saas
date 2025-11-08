@@ -1,3 +1,8 @@
+/**
+ * Blog types for Sanity CMS integration
+ * Used by blog feature components and utilities
+ */
+
 import { PortableTextBlock } from "sanity";
 
 export type Author = {
@@ -22,3 +27,4 @@ export type Blog = {
 	tags: string[];
 	publishedAt: string;
 };
+

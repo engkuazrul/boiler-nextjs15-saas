@@ -3,7 +3,7 @@ import SocialShare from "@/features/blog/components/social-share";
 import CopyToClipboard from "@/components/ui/copy-to-clipboard";
 import { structuredAlgoliaHtmlData } from "@/lib/algolia-search";
 import { getPostBySlug, imageBuilder } from "@/sanity/sanity-utils";
-import { Blog } from "@/types/blog";
+import { Blog } from "@/features/blog/types/blog";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
